@@ -1,0 +1,1049 @@
+/* Identidade visual */
+
+
+:root {
+  --breu-type-body:
+    "Grenze",
+    Georgia,
+    serif;
+
+  --breu-type-display:
+    "Grenze Gotisch",
+    "Grenze",
+    Georgia,
+    serif;
+
+  --breu-type-accent:
+    #e99a2d;
+}
+
+
+/* BASE TIPOGRÁFICA — TODAS AS FICHAS */
+
+.breu,
+.breu.personagem-sheet,
+.breu.npc-sheet,
+.breu.equipamento-sheet,
+.breu.magia-sheet {
+  --breu-font-body:
+    var(--breu-type-body);
+
+  --breu-font-condensed:
+    var(--breu-type-body);
+
+  --breu-font-display:
+    var(--breu-type-display);
+
+  font-family:
+    var(--breu-type-body) !important;
+}
+
+
+.breu :where(
+  input,
+  select,
+  textarea
+) {
+  font-family:
+    var(--breu-type-body) !important;
+}
+
+
+/* Botões normais da interface BREU usam Grenze. */
+.breu button:not(
+  .header-control
+):not(
+  .window-control
+):not(
+  [class*="fa-"]
+) {
+  font-family:
+    var(--breu-type-body) !important;
+}
+
+
+.breu :where(
+  input,
+  select,
+  textarea
+) {
+  font-weight:
+    500;
+}
+
+
+/* TÍTULOS E NOMES — LINGUAGEM BREU */
+
+.breu :where(
+  .breu-official-benefits h2,
+  .breu-official-debilities h2,
+  .breu-official-heritage-mechanics h2,
+  .breu-inventory-title h2,
+  .breu-magic-official-title h2,
+  .breu-known-magic-title h2,
+  .breu-known-magic-block h3,
+  .breu-npc-redesign .breu-section > h2,
+  .breu-item-card-title h2,
+  .breu-magic-item-card-title h2
+) {
+  font-family:
+    var(--breu-type-display) !important;
+
+  font-weight:
+    700 !important;
+
+  letter-spacing:
+    0.015em !important;
+}
+
+
+.breu .breu-field-name input,
+.breu .breu-npc-name,
+.breu .breu-item-hero-name,
+.breu .breu-magic-hero-name {
+  font-family:
+    var(--breu-type-display) !important;
+
+  font-weight:
+    700 !important;
+
+  letter-spacing:
+    0.01em !important;
+}
+
+
+.breu .breu-field-name input {
+  font-size:
+    14px !important;
+}
+
+
+.breu .breu-npc-name {
+  font-size:
+    28px !important;
+}
+
+
+.breu .breu-item-hero-name,
+.breu .breu-magic-hero-name {
+  font-size:
+    26px !important;
+}
+
+
+/* LABELS / METADADOS */
+
+.breu :where(
+  .breu-official-line > span,
+  .breu-official-class-summary > span,
+  .breu-official-xp > span,
+  .breu-item-kicker,
+  .breu-magic-kicker,
+  .breu-item-primary-grid label > span,
+  .breu-magic-identity-grid label > span,
+  .breu-magic-casting-grid label > span,
+  .breu-magic-cost-field > span,
+  .breu-npc-redesign label > span,
+  .breu-official-stat > span
+) {
+  font-family:
+    var(--breu-type-body) !important;
+
+  font-weight:
+    700 !important;
+
+  letter-spacing:
+    0.055em !important;
+
+  text-transform:
+    uppercase;
+}
+
+
+/* CABEÇALHO DO PERSONAGEM */
+
+.breu .breu-official-class-summary b {
+  font-family:
+    var(--breu-type-body) !important;
+
+  font-size:
+    11px !important;
+
+  font-weight:
+    600 !important;
+
+  line-height:
+    1.15 !important;
+}
+
+
+.breu .breu-official-line input,
+.breu .breu-official-line textarea,
+.breu .breu-official-xp input,
+.breu .breu-official-preview-text {
+  font-family:
+    var(--breu-type-body) !important;
+
+  font-size:
+    11px !important;
+
+  font-weight:
+    500 !important;
+}
+
+
+/* ATRIBUTOS E NÚMEROS IMPORTANTES */
+
+.breu .breu-official-attribute-title strong,
+.breu .breu-npc-attribute strong {
+  font-family:
+    var(--breu-type-display) !important;
+
+  font-weight:
+    800 !important;
+
+  letter-spacing:
+    0.01em !important;
+}
+
+
+.breu .breu-official-attribute-title small,
+.breu .breu-official-stat > span,
+.breu .breu-official-stat > small {
+  font-family:
+    var(--breu-type-body) !important;
+}
+
+
+.breu .breu-official-attribute-value,
+.breu .breu-official-stat > strong,
+.breu .breu-official-pv input,
+.breu .breu-official-dv strong,
+.breu .breu-npc-redesign .breu-npc-tr-roll,
+.breu .breu-npc-redesign .breu-npc-moral-roll {
+  font-family:
+    var(--breu-type-body) !important;
+
+  font-weight:
+    700 !important;
+}
+
+
+/* ABAS / BOTÕES / COMPONENTES */
+
+.breu :where(
+  .breu-tab-button,
+  .breu-npc-tab-button,
+  .breu-sheet-mode-button,
+  .breu-item-hero-tags span,
+  .breu-magic-hero-tags span,
+  .breu-inventory-resource,
+  .breu-magic-circle,
+  .breu-known-magic-row
+) {
+  font-family:
+    var(--breu-type-body) !important;
+}
+
+
+.breu :where(
+  .breu-tab-button,
+  .breu-npc-tab-button,
+  .breu-sheet-mode-button
+) {
+  font-weight:
+    700 !important;
+
+  letter-spacing:
+    0.035em !important;
+}
+
+
+/* DIÁLOGOS / ROLAGENS / INICIATIVA */
+
+.breu-roll-dialog,
+.breu-rest-dialog,
+.breu-init-panel,
+.breu-chat-card {
+  font-family:
+    var(--breu-type-body) !important;
+}
+
+
+.breu-roll-dialog :where(
+  input,
+  select,
+  button
+),
+.breu-rest-dialog :where(
+  input,
+  select,
+  button
+) {
+  font-family:
+    var(--breu-type-body) !important;
+}
+
+
+.breu-chat-card__title,
+.breu-chat-card__result {
+  font-family:
+    var(--breu-type-display) !important;
+
+  font-weight:
+    700 !important;
+}
+
+
+/* LOGO — FICHA DE CRIATURA */
+
+.breu.npc-sheet
+.breu-npc-redesign
+.breu-npc-header {
+  grid-template-columns:
+    minmax(0, 1fr)
+    72px
+    112px !important;
+}
+
+
+.breu-npc-brand {
+  display:
+    grid;
+
+  place-items:
+    center;
+
+  width:
+    72px;
+
+  height:
+    86px;
+
+  align-self:
+    center;
+
+  opacity:
+    0.42;
+
+  pointer-events:
+    none;
+
+  transition:
+    opacity 120ms ease,
+    filter 120ms ease;
+}
+
+
+.breu.npc-sheet
+.breu-npc-redesign
+.breu-npc-header
+.breu-npc-brand img {
+  display:
+    block !important;
+
+  width:
+    68px !important;
+
+  height:
+    68px !important;
+
+  object-fit:
+    contain !important;
+
+  aspect-ratio:
+    auto !important;
+
+  border:
+    0 !important;
+
+  filter:
+    drop-shadow(
+      0 0 4px
+      rgba(0, 0, 0, 0.50)
+    );
+}
+
+
+.breu.npc-sheet:hover
+.breu-npc-brand {
+  opacity:
+    0.72;
+}
+
+
+/* LOGO — EQUIPAMENTO / MAGIA */
+
+.breu-item-hero-copy,
+.breu-magic-hero-copy {
+  position:
+    relative;
+
+  padding-right:
+    72px;
+}
+
+
+.breu-item-brand,
+.breu-magic-brand {
+  position:
+    absolute;
+
+  top:
+    -7px;
+
+  right:
+    0;
+
+  width:
+    64px !important;
+
+  height:
+    64px !important;
+
+  object-fit:
+    contain !important;
+
+  border:
+    0 !important;
+
+  opacity:
+    0.18;
+
+  pointer-events:
+    none;
+
+  transition:
+    opacity 120ms ease;
+}
+
+
+.breu-equipamento-redesign:hover
+.breu-item-brand,
+.breu-magia-redesign:hover
+.breu-magic-brand {
+  opacity:
+    0.36;
+}
+
+
+/* CHAT — FRAME PRÓPRIO DO BREU */
+
+.chat-message.breu-message-host {
+  padding:
+    0 !important;
+
+  border:
+    0 !important;
+
+  background:
+    transparent !important;
+
+  background-image:
+    none !important;
+
+  box-shadow:
+    none !important;
+}
+
+
+.chat-message.breu-message-host
+> .message-header {
+  display:
+    none !important;
+}
+
+
+.chat-message.breu-message-host
+.message-content {
+  margin:
+    0 !important;
+
+  padding:
+    0 !important;
+
+  border:
+    0 !important;
+
+  background:
+    transparent !important;
+
+  background-image:
+    none !important;
+}
+
+
+.breu-message-frame,
+.breu-message-frame * {
+  box-sizing:
+    border-box;
+}
+
+
+.breu-message-frame {
+  --breu-message-bg:
+    #0f1117;
+
+  --breu-message-panel:
+    #0a0d12;
+
+  --breu-message-line:
+    #40434a;
+
+  --breu-message-text:
+    #eee7dd;
+
+  --breu-message-muted:
+    #9d958d;
+
+  --breu-message-orange:
+    #e99a2d;
+
+  width:
+    100%;
+
+  overflow:
+    hidden;
+
+  border:
+    1px solid
+    var(--breu-message-line);
+
+  border-radius:
+    6px;
+
+  background:
+    radial-gradient(
+      circle at 78% 0,
+      rgba(233, 154, 45, 0.07),
+      transparent 38%
+    ),
+    linear-gradient(
+      145deg,
+      #151820,
+      var(--breu-message-bg) 70%
+    );
+
+  color:
+    var(--breu-message-text);
+
+  font-family:
+    var(--breu-type-body);
+
+  box-shadow:
+    0 3px 12px
+    rgba(0, 0, 0, 0.30);
+
+  transition:
+    border-color 120ms ease,
+    box-shadow 120ms ease;
+}
+
+
+.breu-message-frame:hover {
+  border-color:
+    rgba(233, 154, 45, 0.74);
+
+  box-shadow:
+    0 4px 14px
+    rgba(0, 0, 0, 0.36),
+    0 0 0 1px
+    rgba(233, 154, 45, 0.055);
+}
+
+
+.breu-message-meta {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  min-height:
+    27px;
+
+  padding:
+    4px 7px;
+
+  border-bottom:
+    1px solid
+    rgba(238, 231, 221, 0.12);
+}
+
+
+.breu-message-user {
+  overflow:
+    hidden;
+
+  color:
+    var(--breu-message-muted);
+
+  font-size:
+    9px;
+
+  font-weight:
+    600;
+
+  text-overflow:
+    ellipsis;
+
+  white-space:
+    nowrap;
+}
+
+
+.breu-message-meta-actions {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    6px;
+
+  margin-left:
+    auto;
+}
+
+
+.breu-message-time {
+  color:
+    #77716b;
+
+  font-size:
+    8px;
+
+  font-variant-numeric:
+    tabular-nums;
+}
+
+
+.breu-message-delete {
+  display:
+    grid;
+
+  width:
+    21px;
+
+  height:
+    21px;
+
+  margin:
+    0 !important;
+
+  padding:
+    0 !important;
+
+  place-items:
+    center;
+
+  border:
+    0 !important;
+
+  background:
+    transparent !important;
+
+  color:
+    #77716b !important;
+
+  box-shadow:
+    none !important;
+}
+
+
+.breu-message-delete:hover {
+  color:
+    var(--breu-message-orange) !important;
+}
+
+
+.breu-message-identity {
+  position:
+    relative;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    9px;
+
+  min-height:
+    54px;
+
+  padding:
+    7px 66px 7px 9px;
+
+  border-bottom:
+    1px solid
+    rgba(238, 231, 221, 0.12);
+}
+
+
+.breu-message-avatar {
+  flex:
+    0 0 40px;
+
+  width:
+    40px !important;
+
+  height:
+    40px !important;
+
+  margin:
+    0 !important;
+
+  padding:
+    0 !important;
+
+  border:
+    1px solid
+    rgba(233, 154, 45, 0.72) !important;
+
+  border-radius:
+    50% !important;
+
+  background:
+    #090b0f;
+
+  object-fit:
+    cover;
+
+  box-shadow:
+    none !important;
+}
+
+
+.breu-message-person {
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  justify-content:
+    center;
+
+  gap:
+    1px;
+
+  min-width:
+    0;
+}
+
+
+.breu-message-person-name {
+  overflow:
+    hidden;
+
+  color:
+    var(--breu-message-orange);
+
+  font-family:
+    var(--breu-type-display);
+
+  font-size:
+    15px;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    0.01em;
+
+  line-height:
+    1.05;
+
+  text-overflow:
+    ellipsis;
+
+  white-space:
+    nowrap;
+}
+
+
+.breu-message-person-user {
+  overflow:
+    hidden;
+
+  color:
+    var(--breu-message-muted);
+
+  font-size:
+    8px;
+
+  font-weight:
+    600;
+
+  text-overflow:
+    ellipsis;
+
+  white-space:
+    nowrap;
+}
+
+
+.breu-message-brand {
+  position:
+    absolute;
+
+  top:
+    4px;
+
+  right:
+    9px;
+
+  width:
+    54px !important;
+
+  height:
+    46px !important;
+
+  margin:
+    0 !important;
+
+  padding:
+    0 !important;
+
+  border:
+    0 !important;
+
+  object-fit:
+    contain;
+
+  opacity:
+    0.20;
+
+  filter:
+    drop-shadow(
+      0 0 3px
+      rgba(0, 0, 0, 0.55)
+    );
+
+  pointer-events:
+    none;
+
+  transition:
+    opacity 120ms ease;
+}
+
+
+.breu-message-frame:hover
+.breu-message-brand {
+  opacity:
+    0.42;
+}
+
+
+.breu-message-body {
+  min-width:
+    0;
+
+  padding:
+    8px 9px 9px;
+}
+
+
+.breu-message-frame.is-narrative
+.breu-message-body,
+.breu-message-frame.is-narrative
+.breu-message-body p {
+  color:
+    var(--breu-message-text);
+
+  font-size:
+    12px;
+
+  font-weight:
+    500;
+
+  line-height:
+    1.45;
+}
+
+
+.breu-message-frame.is-narrative
+.breu-message-body p {
+  margin:
+    3px 0;
+}
+
+
+.breu-message-frame
+.breu-chat-card {
+  margin:
+    0 !important;
+
+  padding:
+    0 !important;
+
+  border:
+    0 !important;
+
+  border-radius:
+    0 !important;
+
+  background:
+    transparent !important;
+
+  background-image:
+    none !important;
+
+  box-shadow:
+    none !important;
+
+  transform:
+    none !important;
+}
+
+
+.breu-message-frame
+.breu-chat-card::before,
+.breu-message-frame
+.breu-chat-card::after {
+  display:
+    none !important;
+}
+
+
+.breu-message-frame
+.breu-chat-card__eyebrow {
+  font-family:
+    var(--breu-type-body) !important;
+
+  font-weight:
+    700 !important;
+}
+
+
+.breu-message-frame
+.breu-chat-card__title,
+.breu-message-frame
+.breu-chat-card__result {
+  font-family:
+    var(--breu-type-display) !important;
+}
+
+
+.breu-message-roll {
+  margin-top:
+    8px;
+
+  padding-top:
+    8px;
+
+  border-top:
+    1px solid
+    rgba(238, 231, 221, 0.12);
+}
+
+
+.breu-message-frame
+.dice-roll {
+  margin:
+    0;
+}
+
+
+.breu-message-frame
+.dice-formula {
+  border:
+    1px solid
+    #343940 !important;
+
+  background:
+    var(--breu-message-panel) !important;
+
+  background-image:
+    none !important;
+
+  color:
+    #b7afa7 !important;
+
+  font-family:
+    var(--breu-type-body) !important;
+
+  box-shadow:
+    none !important;
+}
+
+
+.breu-message-frame
+.dice-total {
+  border:
+    1px solid
+    #454950 !important;
+
+  background:
+    var(--breu-message-panel) !important;
+
+  background-image:
+    none !important;
+
+  color:
+    #f0e9df !important;
+
+  font-family:
+    var(--breu-type-display) !important;
+
+  font-weight:
+    700 !important;
+
+  box-shadow:
+    none !important;
+}
+
+
+.breu-message-frame
+.dice-total:hover {
+  border-color:
+    var(--breu-message-orange) !important;
+
+  color:
+    var(--breu-message-orange) !important;
+}
+
+
+/* PEQUENOS AJUSTES RESPONSIVOS */
+
+@media (max-width: 640px) {
+
+  .breu.npc-sheet
+  .breu-npc-redesign
+  .breu-npc-header {
+    grid-template-columns:
+      minmax(0, 1fr)
+      112px !important;
+  }
+
+  .breu-npc-brand {
+    display:
+      none;
+  }
+
+}
+
+.breu :where(
+  input,
+  select,
+  textarea
+) {
+  font-family:
+    var(--breu-type-body) !important;
+}
+
+
+/* Botões normais da interface BREU usam Grenze. */
+.breu button:not(
+  .header-control
+):not(
+  .window-control
+):not(
+  [class*="fa-"]
+) {
+  font-family:
+    var(--breu-type-body) !important;
+}

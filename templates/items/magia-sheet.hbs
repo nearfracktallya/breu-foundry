@@ -1,0 +1,198 @@
+<div class="breu-magia-item breu-magia-redesign">
+
+  <header class="breu-magic-hero">
+
+    <div
+      class="breu-magic-hero-symbol"
+      title="Imagem da magia"
+    >
+      <img
+        src="{{item.img}}"
+        alt="{{item.name}}"
+        data-action="editImage"
+        data-edit="img"
+      >
+
+      <span>
+        <i class="fa-solid fa-image"></i>
+      </span>
+    </div>
+
+    <div class="breu-magic-hero-copy">
+
+      <img
+        class="breu-magic-brand"
+        src="systems/breu/assets/logo-breu.png"
+        alt=""
+        aria-hidden="true"
+      >
+
+      <span class="breu-magic-kicker">
+        {{resumoMagia.tipo}}
+      </span>
+
+      <input
+        class="breu-magic-hero-name"
+        type="text"
+        name="name"
+        value="{{item.name}}"
+        placeholder="Nome da magia"
+      >
+
+      <div class="breu-magic-hero-tags">
+        <span>
+          {{resumoMagia.circulo}}
+        </span>
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <section class="breu-magic-item-card">
+
+    <div class="breu-magic-item-card-title">
+      <div>
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        <h2>Magia</h2>
+      </div>
+    </div>
+
+    <div class="breu-magic-identity-grid">
+
+      <label>
+        <span>Tipo</span>
+
+        <select name="system.tipo">
+
+          <option
+            value="feitico"
+            {{#if isFeitico}}selected{{/if}}
+          >
+            Feitiço
+          </option>
+
+          <option
+            value="milagre"
+            {{#if isMilagre}}selected{{/if}}
+          >
+            Milagre
+          </option>
+
+        </select>
+      </label>
+
+      <label>
+        <span>Círculo</span>
+
+        <select name="system.circulo">
+
+          {{#each circulos}}
+
+            <option
+              value="{{value}}"
+              {{#if selected}}selected{{/if}}
+            >
+              {{label}}
+            </option>
+
+          {{/each}}
+
+        </select>
+      </label>
+
+    </div>
+
+  </section>
+
+
+  <section class="breu-magic-item-card">
+
+    <div class="breu-magic-item-card-title">
+      <div>
+        <i class="fa-solid fa-burst"></i>
+        <h2>Conjuração</h2>
+      </div>
+    </div>
+
+    <div class="breu-magic-casting-grid">
+
+      <label>
+        <span>Tempo</span>
+
+        <input
+          type="text"
+          name="system.tempo"
+          value="{{system.tempo}}"
+          placeholder="1 ação..."
+        >
+      </label>
+
+      <label>
+        <span>Alcance</span>
+
+        <input
+          type="text"
+          name="system.alcance"
+          value="{{system.alcance}}"
+          placeholder="Toque, Curto..."
+        >
+      </label>
+
+      <label>
+        <span>Área</span>
+
+        <input
+          type="text"
+          name="system.area"
+          value="{{system.area}}"
+          placeholder="Se houver"
+        >
+      </label>
+
+      <label>
+        <span>Duração</span>
+
+        <input
+          type="text"
+          name="system.duracao"
+          value="{{system.duracao}}"
+          placeholder="Instantânea..."
+        >
+      </label>
+
+    </div>
+
+    <label class="breu-magic-cost-field">
+      <span>Custo</span>
+
+      <input
+        type="text"
+        name="system.custo"
+        value="{{system.custo}}"
+        placeholder="Componentes ou custos, se houver"
+      >
+    </label>
+
+  </section>
+
+
+  <section class="breu-magic-item-card breu-magic-description-card">
+
+    <div class="breu-magic-item-card-title">
+      <div>
+        <i class="fa-solid fa-book-open"></i>
+        <h2>Descrição</h2>
+      </div>
+    </div>
+
+    <textarea
+      class="breu-magic-description"
+      name="system.descricao"
+      placeholder="Efeito da magia..."
+    >{{system.descricao}}</textarea>
+
+  </section>
+
+</div>

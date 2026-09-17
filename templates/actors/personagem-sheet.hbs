@@ -1,0 +1,2832 @@
+<div class="breu-personagem">
+
+  
+
+  <div
+    class="breu-sheet-mode-toggle"
+    role="group"
+    aria-label="Modo da ficha"
+  >
+
+    <button
+      type="button"
+      class="breu-sheet-mode-button"
+      data-mode="play"
+      title="Modo de jogo"
+    >
+
+      <i class="fa-solid fa-dice-d20"></i>
+
+      <span>
+        Jogar
+      </span>
+
+    </button>
+
+
+    <button
+      type="button"
+      class="breu-sheet-mode-button"
+      data-mode="edit"
+      title="Editar ficha"
+    >
+
+      <i class="fa-solid fa-pen"></i>
+
+      <span>
+        Editar
+      </span>
+
+    </button>
+
+  </div>
+
+
+  
+
+  <header class="breu-official-header">
+
+
+    
+
+    <div class="breu-official-identity breu-official-identity-left">
+
+      <div
+        class="breu-character-portrait-wrap"
+        title="Imagem do personagem"
+      >
+
+        <img
+          class="breu-character-portrait"
+          src="{{actor.img}}"
+          alt="{{actor.name}}"
+          data-action="editImage"
+          data-edit="img"
+        >
+
+        <span class="breu-character-portrait-edit">
+
+          <i class="fa-solid fa-image"></i>
+
+        </span>
+
+      </div>
+
+
+      <label class="breu-official-line breu-field-name">
+
+        <span>
+          Nome
+        </span>
+
+        <input
+          type="text"
+          name="name"
+          value="{{actor.name}}"
+          placeholder="Nome do personagem"
+        >
+
+      </label>
+
+
+      <label class="breu-official-line">
+
+        <span>
+          Eu sou um(a)
+        </span>
+
+        <input
+          type="text"
+          name="system.antecedente.sou"
+          value="{{system.antecedente.sou}}"
+          placeholder="Quem você era?"
+        >
+
+      </label>
+
+
+      <label class="breu-official-line">
+
+        <span>
+          Bom(a) em
+        </span>
+
+        <input
+          type="text"
+          name="system.antecedente.bomEm"
+          value="{{system.antecedente.bomEm}}"
+          placeholder="No que você é bom?"
+        >
+
+      </label>
+
+
+      <label class="breu-official-line">
+
+        <span>
+          Em busca de
+        </span>
+
+        <input
+          type="text"
+          name="system.antecedente.emBuscaDe"
+          value="{{system.antecedente.emBuscaDe}}"
+          placeholder="O que você procura?"
+        >
+
+      </label>
+
+    </div>
+
+
+    
+
+    <div class="breu-official-logo">
+
+      <img
+        src="systems/breu/assets/logo-breu.png"
+        alt="BREU"
+      >
+
+    </div>
+
+
+    
+
+    <div class="breu-official-identity breu-official-identity-right">
+
+
+      <div class="breu-official-top-row">
+
+        <div class="breu-official-class-summary">
+
+          <span>
+            Classe
+          </span>
+
+
+          <div>
+
+            {{#if system.progressao.classes.arcanista}}
+
+              <b>
+                Arcanista {{system.progressao.classes.arcanista}}
+              </b>
+
+            {{/if}}
+
+
+            {{#if system.progressao.classes.combatente}}
+
+              <b>
+                Combatente {{system.progressao.classes.combatente}}
+              </b>
+
+            {{/if}}
+
+
+            {{#if system.progressao.classes.especialista}}
+
+              <b>
+                Especialista {{system.progressao.classes.especialista}}
+              </b>
+
+            {{/if}}
+
+
+            {{#if system.progressao.classes.profeta}}
+
+              <b>
+                Profeta {{system.progressao.classes.profeta}}
+              </b>
+
+            {{/if}}
+
+
+            {{#unless system.nivel}}
+
+              <b>
+                Nível Zero
+              </b>
+
+            {{/unless}}
+
+          </div>
+
+        </div>
+
+
+        <label class="breu-official-xp">
+
+          <span>
+            XP
+          </span>
+
+          <input
+            type="number"
+            name="system.progressao.xp"
+            value="{{system.progressao.xp}}"
+            min="0"
+          >
+
+        </label>
+
+      </div>
+
+
+      <label class="breu-official-line">
+
+        <span>
+          Herança
+        </span>
+
+        <input
+          type="text"
+          name="system.heranca.nome"
+          value="{{system.heranca.nome}}"
+          placeholder="Sua Herança"
+        >
+
+      </label>
+
+
+      <div class="breu-official-line breu-official-appearance-preview">
+
+        <span>
+          Aparência
+        </span>
+
+        <div class="breu-official-preview-text">
+
+          {{#if system.heranca.descricao}}
+
+            {{system.heranca.descricao}}
+
+          {{else}}
+
+            <em>
+              Sem descrição.
+            </em>
+
+          {{/if}}
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  
+
+  <nav
+    class="breu-tabs"
+    role="tablist"
+  >
+
+    <button
+      type="button"
+      class="breu-tab-button {{#if tabs.geral}}is-active{{/if}}"
+      data-tab="geral"
+      role="tab"
+      aria-selected="{{tabs.geral}}"
+    >
+
+      <i class="fa-solid fa-user"></i>
+
+      <span>
+        Geral
+      </span>
+
+    </button>
+
+
+    <button
+      type="button"
+      class="breu-tab-button {{#if tabs.inventario}}is-active{{/if}}"
+      data-tab="inventario"
+      role="tab"
+      aria-selected="{{tabs.inventario}}"
+    >
+
+      <i class="fa-solid fa-suitcase"></i>
+
+      <span>
+        Inventário
+      </span>
+
+    </button>
+
+
+    <button
+      type="button"
+      class="breu-tab-button {{#if tabs.magia}}is-active{{/if}}"
+      data-tab="magia"
+      role="tab"
+      aria-selected="{{tabs.magia}}"
+    >
+
+      <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+      <span>
+        Magia
+      </span>
+
+    </button>
+
+
+    <button
+      type="button"
+      class="breu-tab-button {{#if tabs.anotacoes}}is-active{{/if}}"
+      data-tab="anotacoes"
+      role="tab"
+      aria-selected="{{tabs.anotacoes}}"
+    >
+
+      <i class="fa-solid fa-book-open"></i>
+
+      <span>
+        Anotações
+      </span>
+
+    </button>
+
+  </nav>
+
+
+  
+
+  <div class="breu-tab-content">
+
+
+    
+
+    <div
+      class="breu-tab-panel {{#if tabs.geral}}is-active{{/if}}"
+      data-tab="geral"
+    >
+
+
+      
+
+      <section class="breu-official-core">
+
+        <div class="breu-official-attributes">
+
+
+          
+
+          <div class="breu-official-attribute">
+
+            <div class="breu-official-attribute-title">
+
+              <small>
+                Força
+              </small>
+
+              <strong>
+                FOR
+              </strong>
+
+            </div>
+
+
+            <input
+              class="breu-official-attribute-value"
+              type="number"
+              name="system.atributos.for"
+              value="{{system.atributos.for}}"
+              min="-5"
+              max="5"
+            >
+
+
+            <div class="breu-official-tr">
+
+              <label>
+
+                <input
+                  type="checkbox"
+                  name="system.resistencias.for"
+                  {{checked system.resistencias.for}}
+                >
+
+                <span>
+                  TR
+                </span>
+
+              </label>
+
+
+              <button
+                type="button"
+                class="tr-roll"
+                data-attribute="for"
+              >
+                {{system.tr.for}}
+              </button>
+
+            </div>
+
+          </div>
+
+
+          
+
+          <div class="breu-official-attribute">
+
+            <div class="breu-official-attribute-title">
+
+              <small>
+                Destreza
+              </small>
+
+              <strong>
+                DES
+              </strong>
+
+            </div>
+
+
+            <input
+              class="breu-official-attribute-value"
+              type="number"
+              name="system.atributos.des"
+              value="{{system.atributos.des}}"
+              min="-5"
+              max="5"
+            >
+
+
+            <div class="breu-official-tr">
+
+              <label>
+
+                <input
+                  type="checkbox"
+                  name="system.resistencias.des"
+                  {{checked system.resistencias.des}}
+                >
+
+                <span>
+                  TR
+                </span>
+
+              </label>
+
+
+              <button
+                type="button"
+                class="tr-roll"
+                data-attribute="des"
+              >
+                {{system.tr.des}}
+              </button>
+
+            </div>
+
+          </div>
+
+
+          
+
+          <div class="breu-official-attribute">
+
+            <div class="breu-official-attribute-title">
+
+              <small>
+                Constituição
+              </small>
+
+              <strong>
+                CON
+              </strong>
+
+            </div>
+
+
+            <input
+              class="breu-official-attribute-value"
+              type="number"
+              name="system.atributos.con"
+              value="{{system.atributos.con}}"
+              min="-5"
+              max="5"
+            >
+
+
+            <div class="breu-official-tr">
+
+              <label>
+
+                <input
+                  type="checkbox"
+                  name="system.resistencias.con"
+                  {{checked system.resistencias.con}}
+                >
+
+                <span>
+                  TR
+                </span>
+
+              </label>
+
+
+              <button
+                type="button"
+                class="tr-roll"
+                data-attribute="con"
+              >
+                {{system.tr.con}}
+              </button>
+
+            </div>
+
+          </div>
+
+
+          
+
+          <div class="breu-official-attribute">
+
+            <div class="breu-official-attribute-title">
+
+              <small>
+                Inteligência
+              </small>
+
+              <strong>
+                INT
+              </strong>
+
+            </div>
+
+
+            <input
+              class="breu-official-attribute-value"
+              type="number"
+              name="system.atributos.int"
+              value="{{system.atributos.int}}"
+              min="-5"
+              max="5"
+            >
+
+
+            <div class="breu-official-tr">
+
+              <label>
+
+                <input
+                  type="checkbox"
+                  name="system.resistencias.int"
+                  {{checked system.resistencias.int}}
+                >
+
+                <span>
+                  TR
+                </span>
+
+              </label>
+
+
+              <button
+                type="button"
+                class="tr-roll"
+                data-attribute="int"
+              >
+                {{system.tr.int}}
+              </button>
+
+            </div>
+
+          </div>
+
+
+          
+
+          <div class="breu-official-attribute">
+
+            <div class="breu-official-attribute-title">
+
+              <small>
+                Sabedoria
+              </small>
+
+              <strong>
+                SAB
+              </strong>
+
+            </div>
+
+
+            <input
+              class="breu-official-attribute-value"
+              type="number"
+              name="system.atributos.sab"
+              value="{{system.atributos.sab}}"
+              min="-5"
+              max="5"
+            >
+
+
+            <div class="breu-official-tr">
+
+              <label>
+
+                <input
+                  type="checkbox"
+                  name="system.resistencias.sab"
+                  {{checked system.resistencias.sab}}
+                >
+
+                <span>
+                  TR
+                </span>
+
+              </label>
+
+
+              <button
+                type="button"
+                class="tr-roll"
+                data-attribute="sab"
+              >
+                {{system.tr.sab}}
+              </button>
+
+            </div>
+
+          </div>
+
+
+          
+
+          <div class="breu-official-attribute">
+
+            <div class="breu-official-attribute-title">
+
+              <small>
+                Carisma
+              </small>
+
+              <strong>
+                CAR
+              </strong>
+
+            </div>
+
+
+            <input
+              class="breu-official-attribute-value"
+              type="number"
+              name="system.atributos.car"
+              value="{{system.atributos.car}}"
+              min="-5"
+              max="5"
+            >
+
+
+            <div class="breu-official-tr">
+
+              <label>
+
+                <input
+                  type="checkbox"
+                  name="system.resistencias.car"
+                  {{checked system.resistencias.car}}
+                >
+
+                <span>
+                  TR
+                </span>
+
+              </label>
+
+
+              <button
+                type="button"
+                class="tr-roll"
+                data-attribute="car"
+              >
+                {{system.tr.car}}
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        
+
+        <div class="breu-official-stats">
+
+
+          <div class="breu-official-stat breu-official-bp">
+
+            <span>
+              Bônus de Proficiência
+            </span>
+
+            <strong>
+              +{{system.bp}}
+            </strong>
+
+          </div>
+
+
+          <div class="breu-official-stat breu-official-ca">
+
+            <span>
+              CA
+            </span>
+
+            <strong>
+              {{ca.total}}
+            </strong>
+
+            <small>
+              10 + DES + Proteções
+            </small>
+
+          </div>
+
+
+          <label class="breu-official-stat breu-official-movement">
+
+            <span>
+              Deslocamento
+            </span>
+
+            <input
+              class="breu-official-movement-input"
+              type="text"
+              name="system.deslocamento"
+              value="{{system.deslocamento}}"
+              placeholder="Normal"
+            >
+
+          </label>
+
+
+          <div class="breu-official-stat breu-official-pv">
+
+            <span>
+              PV
+            </span>
+
+
+            <div>
+
+              <input
+                type="number"
+                name="system.vida.value"
+                value="{{system.vida.value}}"
+                min="0"
+              >
+
+              <b>
+                /
+              </b>
+
+              <input
+                type="number"
+                name="system.vida.max"
+                value="{{system.vida.max}}"
+                min="0"
+              >
+
+            </div>
+
+          </div>
+
+
+          <div class="breu-official-stat breu-official-dv">
+
+            <span>
+              Dados de Vida
+            </span>
+
+            <strong>
+              {{system.dv.resumo}}
+            </strong>
+
+
+            <div class="breu-official-dv-used">
+
+
+              {{#if system.dv.d4.total}}
+
+                <label>
+
+                  <small>
+                    d4 usados
+                  </small>
+
+                  <input
+                    type="number"
+                    name="system.dadosVida.usadosD4"
+                    value="{{system.dadosVida.usadosD4}}"
+                    min="0"
+                    max="{{system.dv.d4.total}}"
+                  >
+
+                </label>
+
+              {{/if}}
+
+
+              {{#if system.dv.d8.total}}
+
+                <label>
+
+                  <small>
+                    d8 usados
+                  </small>
+
+                  <input
+                    type="number"
+                    name="system.dadosVida.usadosD8"
+                    value="{{system.dadosVida.usadosD8}}"
+                    min="0"
+                    max="{{system.dv.d8.total}}"
+                  >
+
+                </label>
+
+              {{/if}}
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      
+
+      <section class="breu-class-editor">
+
+        <div class="breu-official-section-title">
+
+          <span>
+            Classes
+          </span>
+
+          <small>
+            Nível total {{system.nivel}}
+          </small>
+
+        </div>
+
+
+        <div class="breu-class-editor-grid">
+
+
+          <label>
+
+            <span>
+              Arcanista
+            </span>
+
+            <input
+              type="number"
+              name="system.progressao.classes.arcanista"
+              value="{{system.progressao.classes.arcanista}}"
+              min="0"
+              max="10"
+            >
+
+          </label>
+
+
+          <label>
+
+            <span>
+              Combatente
+            </span>
+
+            <input
+              type="number"
+              name="system.progressao.classes.combatente"
+              value="{{system.progressao.classes.combatente}}"
+              min="0"
+              max="10"
+            >
+
+          </label>
+
+
+          <label>
+
+            <span>
+              Especialista
+            </span>
+
+            <input
+              type="number"
+              name="system.progressao.classes.especialista"
+              value="{{system.progressao.classes.especialista}}"
+              min="0"
+              max="10"
+            >
+
+          </label>
+
+
+          <label>
+
+            <span>
+              Profeta
+            </span>
+
+            <input
+              type="number"
+              name="system.progressao.classes.profeta"
+              value="{{system.progressao.classes.profeta}}"
+              min="0"
+              max="10"
+            >
+
+          </label>
+
+        </div>
+
+      </section>
+
+
+      
+
+      <div class="breu-official-lower-grid">
+
+
+        
+
+        <section class="breu-official-benefits">
+
+          <h2>
+            Benefícios de Classe
+          </h2>
+
+
+          <div class="breu-benefit-lines">
+
+            <label>
+              <span>1</span>
+              <input
+                type="text"
+                name="system.beneficiosClasse.b1"
+                value="{{system.beneficiosClasse.b1}}"
+              >
+            </label>
+
+            <label>
+              <span>2</span>
+              <input
+                type="text"
+                name="system.beneficiosClasse.b2"
+                value="{{system.beneficiosClasse.b2}}"
+              >
+            </label>
+
+            <label>
+              <span>3</span>
+              <input
+                type="text"
+                name="system.beneficiosClasse.b3"
+                value="{{system.beneficiosClasse.b3}}"
+              >
+            </label>
+
+            <label>
+              <span>4</span>
+              <input
+                type="text"
+                name="system.beneficiosClasse.b4"
+                value="{{system.beneficiosClasse.b4}}"
+              >
+            </label>
+
+            <label>
+              <span>5</span>
+              <input
+                type="text"
+                name="system.beneficiosClasse.b5"
+                value="{{system.beneficiosClasse.b5}}"
+              >
+            </label>
+
+            <label>
+              <span>6</span>
+              <input
+                type="text"
+                name="system.beneficiosClasse.b6"
+                value="{{system.beneficiosClasse.b6}}"
+              >
+            </label>
+
+            <label>
+              <span>7</span>
+              <input
+                type="text"
+                name="system.beneficiosClasse.b7"
+                value="{{system.beneficiosClasse.b7}}"
+              >
+            </label>
+
+            <label>
+              <span>8</span>
+              <input
+                type="text"
+                name="system.beneficiosClasse.b8"
+                value="{{system.beneficiosClasse.b8}}"
+              >
+            </label>
+
+            <label>
+              <span>9</span>
+              <input
+                type="text"
+                name="system.beneficiosClasse.b9"
+                value="{{system.beneficiosClasse.b9}}"
+              >
+            </label>
+
+            <label>
+              <span>10</span>
+              <input
+                type="text"
+                name="system.beneficiosClasse.b10"
+                value="{{system.beneficiosClasse.b10}}"
+              >
+            </label>
+
+          </div>
+
+        </section>
+
+
+        
+
+        <section class="breu-official-debilities">
+
+          <div class="breu-official-debility-title">
+
+            <h2>
+              Debilidades
+            </h2>
+
+            <strong>
+              {{system.estadoDebilidades.quantidade}} / 5
+            </strong>
+
+          </div>
+
+
+          <div class="breu-official-debility-consequence">
+
+            <span>
+              Consequência atual
+            </span>
+
+            <strong>
+              {{system.estadoDebilidades.efeito}}
+            </strong>
+
+          </div>
+
+
+          <div class="breu-official-debility-list">
+
+
+            <div class="breu-official-debility-row">
+
+              <b>
+                1
+              </b>
+
+              <select name="system.debilidades.d1.tipo">
+
+                <option
+                  value="nenhuma"
+                  {{#if (eq system.debilidades.d1.tipo "nenhuma")}}selected{{/if}}
+                >
+                  —
+                </option>
+
+                <option
+                  value="leve"
+                  {{#if (eq system.debilidades.d1.tipo "leve")}}selected{{/if}}
+                >
+                  Leve
+                </option>
+
+                <option
+                  value="pesada"
+                  {{#if (eq system.debilidades.d1.tipo "pesada")}}selected{{/if}}
+                >
+                  Pesada
+                </option>
+
+                <option
+                  value="permanente"
+                  {{#if (eq system.debilidades.d1.tipo "permanente")}}selected{{/if}}
+                >
+                  Permanente
+                </option>
+
+              </select>
+
+              <input
+                type="text"
+                name="system.debilidades.d1.fonte"
+                value="{{system.debilidades.d1.fonte}}"
+                placeholder="Anotação"
+              >
+
+            </div>
+
+
+            <div class="breu-official-debility-row">
+
+              <b>
+                2
+              </b>
+
+              <select name="system.debilidades.d2.tipo">
+
+                <option
+                  value="nenhuma"
+                  {{#if (eq system.debilidades.d2.tipo "nenhuma")}}selected{{/if}}
+                >
+                  —
+                </option>
+
+                <option
+                  value="leve"
+                  {{#if (eq system.debilidades.d2.tipo "leve")}}selected{{/if}}
+                >
+                  Leve
+                </option>
+
+                <option
+                  value="pesada"
+                  {{#if (eq system.debilidades.d2.tipo "pesada")}}selected{{/if}}
+                >
+                  Pesada
+                </option>
+
+                <option
+                  value="permanente"
+                  {{#if (eq system.debilidades.d2.tipo "permanente")}}selected{{/if}}
+                >
+                  Permanente
+                </option>
+
+              </select>
+
+              <input
+                type="text"
+                name="system.debilidades.d2.fonte"
+                value="{{system.debilidades.d2.fonte}}"
+                placeholder="Anotação"
+              >
+
+            </div>
+
+
+            <div class="breu-official-debility-row">
+
+              <b>
+                3
+              </b>
+
+              <select name="system.debilidades.d3.tipo">
+
+                <option
+                  value="nenhuma"
+                  {{#if (eq system.debilidades.d3.tipo "nenhuma")}}selected{{/if}}
+                >
+                  —
+                </option>
+
+                <option
+                  value="leve"
+                  {{#if (eq system.debilidades.d3.tipo "leve")}}selected{{/if}}
+                >
+                  Leve
+                </option>
+
+                <option
+                  value="pesada"
+                  {{#if (eq system.debilidades.d3.tipo "pesada")}}selected{{/if}}
+                >
+                  Pesada
+                </option>
+
+                <option
+                  value="permanente"
+                  {{#if (eq system.debilidades.d3.tipo "permanente")}}selected{{/if}}
+                >
+                  Permanente
+                </option>
+
+              </select>
+
+              <input
+                type="text"
+                name="system.debilidades.d3.fonte"
+                value="{{system.debilidades.d3.fonte}}"
+                placeholder="Anotação"
+              >
+
+            </div>
+
+
+            <div class="breu-official-debility-row">
+
+              <b>
+                4
+              </b>
+
+              <select name="system.debilidades.d4.tipo">
+
+                <option
+                  value="nenhuma"
+                  {{#if (eq system.debilidades.d4.tipo "nenhuma")}}selected{{/if}}
+                >
+                  —
+                </option>
+
+                <option
+                  value="leve"
+                  {{#if (eq system.debilidades.d4.tipo "leve")}}selected{{/if}}
+                >
+                  Leve
+                </option>
+
+                <option
+                  value="pesada"
+                  {{#if (eq system.debilidades.d4.tipo "pesada")}}selected{{/if}}
+                >
+                  Pesada
+                </option>
+
+                <option
+                  value="permanente"
+                  {{#if (eq system.debilidades.d4.tipo "permanente")}}selected{{/if}}
+                >
+                  Permanente
+                </option>
+
+              </select>
+
+              <input
+                type="text"
+                name="system.debilidades.d4.fonte"
+                value="{{system.debilidades.d4.fonte}}"
+                placeholder="Anotação"
+              >
+
+            </div>
+
+
+            <div class="breu-official-debility-row">
+
+              <b>
+                5
+              </b>
+
+              <select name="system.debilidades.d5.tipo">
+
+                <option
+                  value="nenhuma"
+                  {{#if (eq system.debilidades.d5.tipo "nenhuma")}}selected{{/if}}
+                >
+                  —
+                </option>
+
+                <option
+                  value="leve"
+                  {{#if (eq system.debilidades.d5.tipo "leve")}}selected{{/if}}
+                >
+                  Leve
+                </option>
+
+                <option
+                  value="pesada"
+                  {{#if (eq system.debilidades.d5.tipo "pesada")}}selected{{/if}}
+                >
+                  Pesada
+                </option>
+
+                <option
+                  value="permanente"
+                  {{#if (eq system.debilidades.d5.tipo "permanente")}}selected{{/if}}
+                >
+                  Permanente
+                </option>
+
+              </select>
+
+              <input
+                type="text"
+                name="system.debilidades.d5.fonte"
+                value="{{system.debilidades.d5.fonte}}"
+                placeholder="Anotação"
+              >
+
+            </div>
+
+          </div>
+
+        </section>
+
+      </div>
+
+
+      
+
+      <section class="breu-official-heritage-mechanics">
+
+        <h2>
+          Herança
+        </h2>
+
+
+        <div class="breu-official-heritage-grid">
+
+
+          <label>
+
+            <span>
+              Benefício I
+            </span>
+
+            <textarea
+              name="system.heranca.beneficio1"
+              rows="2"
+            >{{system.heranca.beneficio1}}</textarea>
+
+          </label>
+
+
+          <label>
+
+            <span>
+              Benefício II
+            </span>
+
+            <textarea
+              name="system.heranca.beneficio2"
+              rows="2"
+            >{{system.heranca.beneficio2}}</textarea>
+
+          </label>
+
+
+          <label>
+
+            <span>
+              Complicação
+            </span>
+
+            <textarea
+              name="system.heranca.complicacao"
+              rows="2"
+            >{{system.heranca.complicacao}}</textarea>
+
+          </label>
+
+        </div>
+
+      </section>
+
+    </div>
+
+
+    
+
+<div
+  class="breu-tab-panel {{#if tabs.inventario}}is-active{{/if}}"
+  data-tab="inventario"
+>
+
+  <section class="breu-inventory-official">
+
+
+    
+
+    <div class="breu-inventory-title">
+
+      <div>
+
+        <h2>
+          Equipamentos &amp; Carga
+        </h2>
+
+        <span>
+          Organização, carga e recursos do personagem.
+        </span>
+
+      </div>
+
+
+      {{#if carga.sobrecarregado}}
+
+        <strong class="breu-inventory-warning">
+          Sobrecarga
+        </strong>
+
+      {{/if}}
+
+
+      {{#if carga.excessoMinimo}}
+
+        <strong class="breu-inventory-warning">
+          Excesso de Carga Mínima
+        </strong>
+
+      {{/if}}
+
+    </div>
+
+
+    
+
+    <div class="breu-inventory-resources">
+
+
+      
+
+      <div class="breu-inventory-resource">
+
+        <span>
+          Carga
+        </span>
+
+        <strong>
+          {{carga.atual}}
+          <small>/</small>
+          {{carga.max}}
+        </strong>
+
+      </div>
+
+
+      
+
+      <div class="breu-inventory-resource">
+
+        <span>
+          Carga Mínima
+        </span>
+
+        <strong>
+          {{carga.minimaAtual}}
+          <small>/</small>
+          {{carga.minimaMax}}
+        </strong>
+
+      </div>
+
+
+      
+
+      <label class="breu-inventory-resource breu-inventory-silver">
+
+        <span>
+          Prata
+        </span>
+
+        <input
+          type="number"
+          name="system.riqueza.prata"
+          value="{{system.riqueza.prata}}"
+          min="0"
+        >
+
+      </label>
+
+
+      
+
+      <div class="breu-inventory-resource breu-inventory-backpack">
+
+        <span>
+          Mochila
+        </span>
+
+        {{#if carga.mochila}}
+
+          <strong>
+            Equipada
+          </strong>
+
+          <small>
+            +6 Carga · +20 Mínima
+          </small>
+
+        {{else}}
+
+          <strong>
+            —
+          </strong>
+
+          <small>
+            Nenhuma equipada
+          </small>
+
+        {{/if}}
+
+      </div>
+
+
+    </div>
+
+
+    
+
+    <div class="breu-inventory-official-grid">
+
+
+      {{#each inventario.grupos}}
+
+
+        <section
+          class="
+            breu-inventory-group
+            breu-inventory-group-{{key}}
+          "
+        >
+
+
+          <header class="breu-inventory-group-header">
+
+            <h3>
+              {{titulo}}
+            </h3>
+
+            <span>
+              {{itens.length}}
+            </span>
+
+          </header>
+
+
+          <div class="breu-inventory-group-list">
+
+
+            {{#each itens}}
+
+
+              <div
+                class="breu-inventory-official-row"
+                data-item-id="{{id}}"
+                draggable="true"
+              >
+
+
+                
+
+                <button
+                  type="button"
+                  class="breu-item-open breu-inventory-item-name"
+                  data-item-id="{{id}}"
+                  title="Abrir {{name}}"
+                >
+
+                  {{name}}
+
+                </button>
+
+
+                
+
+                <div class="breu-inventory-item-meta">
+
+
+                  <span
+                    class="breu-inventory-item-quantity"
+                    title="Quantidade"
+                  >
+
+                    {{quantidade}}×
+
+                  </span>
+
+
+                  <span
+                    class="breu-inventory-item-load"
+                    title="Carga"
+                  >
+
+                    C {{carga}}
+
+                  </span>
+
+
+                  {{#if isMochila}}
+
+                    <span
+                      class="breu-inventory-item-backpack"
+                      title="Este equipamento é uma Mochila"
+                    >
+
+                      <i class="fa-solid fa-backpack"></i>
+
+                    </span>
+
+                  {{/if}}
+
+
+                  <label
+                    class="breu-item-equipped-label"
+                    title="Equipado"
+                  >
+
+                    <input
+                      type="checkbox"
+                      class="breu-item-equipped"
+                      data-item-id="{{id}}"
+                      {{checked equipado}}
+                    >
+
+                  </label>
+
+
+                  
+
+                  {{#if isArma}}
+
+
+                    <button
+                      type="button"
+                      class="breu-weapon-attack"
+                      data-item-id="{{id}}"
+                      title="Ataque com {{name}}"
+                    >
+
+                      <i class="fa-solid fa-dice-d20"></i>
+
+                    </button>
+
+
+                    <button
+                      type="button"
+                      class="breu-weapon-damage"
+                      data-item-id="{{id}}"
+                      title="Dano de {{name}}"
+                    >
+
+                      <i class="fa-solid fa-burst"></i>
+
+                    </button>
+
+
+                  {{/if}}
+
+
+                  
+
+                  <button
+                    type="button"
+                    class="breu-item-delete"
+                    data-item-id="{{id}}"
+                    title="Excluir {{name}}"
+                  >
+
+                    <i class="fa-solid fa-trash"></i>
+
+                  </button>
+
+
+                </div>
+
+              </div>
+
+
+            {{else}}
+
+
+              <div class="breu-inventory-group-empty">
+
+                —
+
+              </div>
+
+
+            {{/each}}
+
+
+          </div>
+
+        </section>
+
+
+      {{/each}}
+
+
+    </div>
+
+
+    <div class="breu-inventory-drop-hint">
+
+      <i class="fa-solid fa-arrow-down"></i>
+
+      Arraste equipamentos para a ficha para adicioná-los.
+
+    </div>
+
+  </section>
+
+</div>
+
+
+     
+
+<div
+  class="breu-tab-panel {{#if tabs.magia}}is-active{{/if}}"
+  data-tab="magia"
+>
+
+  <section class="breu-magic-official">
+
+
+    
+
+    <div class="breu-magic-official-title">
+
+      <div>
+
+        <h2>
+          Magia
+        </h2>
+
+        <span>
+          Conjuração, Espaços e Magias Conhecidas
+        </span>
+
+      </div>
+
+    </div>
+
+
+    
+
+    {{#unless magiaUI.temConjurador}}
+
+      <div class="breu-magic-no-caster breu-magic-official-empty">
+
+        O personagem não possui níveis de Arcanista ou Profeta.
+
+      </div>
+
+    {{/unless}}
+
+
+    
+
+    <div class="breu-magic-caster-layout">
+
+
+      
+
+      {{#if magiaUI.arcanista.ativo}}
+
+        <section class="breu-magic-profile breu-magic-profile-arcanista">
+
+          <header class="breu-magic-profile-header">
+
+            <div>
+
+              <h3>
+                Arcanista
+              </h3>
+
+              <span>
+                Nível {{magiaUI.arcanista.nivel}}
+              </span>
+
+            </div>
+
+          </header>
+
+
+          <label class="breu-magic-lore-field">
+
+            <span>
+              Paradigma
+            </span>
+
+            <textarea
+              name="system.magia.arcanista.paradigma"
+              rows="3"
+              placeholder="Descreva seu Paradigma Mágico..."
+            >{{system.magia.arcanista.paradigma}}</textarea>
+
+          </label>
+
+
+          <label class="breu-magic-lore-field">
+
+            <span>
+              Registro minha magia em
+            </span>
+
+            <input
+              type="text"
+              name="system.magia.arcanista.registro"
+              value="{{system.magia.arcanista.registro}}"
+              placeholder="Pergaminhos, pedras, símbolos..."
+            >
+
+          </label>
+
+
+          <div class="breu-magic-form">
+
+            <span class="breu-magic-form-title">
+              Forma de Conjuração
+            </span>
+
+
+            <div class="breu-magic-form-actions">
+
+              <label>
+
+                <span>
+                  I
+                </span>
+
+                <input
+                  type="text"
+                  name="system.magia.arcanista.forma1"
+                  value="{{system.magia.arcanista.forma1}}"
+                  placeholder="Primeira ação"
+                >
+
+              </label>
+
+
+              <label>
+
+                <span>
+                  II
+                </span>
+
+                <input
+                  type="text"
+                  name="system.magia.arcanista.forma2"
+                  value="{{system.magia.arcanista.forma2}}"
+                  placeholder="Segunda ação"
+                >
+
+              </label>
+
+            </div>
+
+          </div>
+
+
+          
+
+          <div class="breu-magic-primary-stats">
+
+
+            <button
+              type="button"
+              class="breu-magic-main-stat breu-magic-test"
+              data-caster="arcanista"
+              title="Realizar Teste de Magia"
+            >
+
+              <span>
+                Teste Mágico
+              </span>
+
+              <strong>
+                {{#if magiaUI.arcanista.teste}}
+                  +{{magiaUI.arcanista.teste}}
+                {{else}}
+                  {{magiaUI.arcanista.teste}}
+                {{/if}}
+              </strong>
+
+              <small>
+                INT + BP
+              </small>
+
+            </button>
+
+
+            <div class="breu-magic-main-stat">
+
+              <span>
+                Potência Mágica
+              </span>
+
+              <strong>
+                {{system.conjuracao.arcanista.potencia}}
+              </strong>
+
+              <small>
+                12 + Nível de Arcanista
+              </small>
+
+            </div>
+
+          </div>
+
+
+          
+
+          <div class="breu-magic-circle-title">
+            Espaços de Magia
+          </div>
+
+
+          <div class="breu-magic-circles">
+
+            {{#each magiaUI.arcanista.espacos}}
+
+              <div class="breu-magic-circle">
+
+                <strong>
+                  {{circulo}}º
+                </strong>
+
+
+                <div class="breu-magic-circle-counter">
+
+                  <button
+                    type="button"
+                    class="breu-slot-change"
+                    data-caster="arcanista"
+                    data-circle="{{circulo}}"
+                    data-delta="-1"
+                    title="Gastar Espaço"
+                  >
+                    −
+                  </button>
+
+
+                  <input
+                    type="number"
+                    name="{{path}}"
+                    value="{{atual}}"
+                    min="0"
+                    max="{{max}}"
+                  >
+
+
+                  <span>
+                    /
+                  </span>
+
+
+                  <b>
+                    {{max}}
+                  </b>
+
+
+                  <button
+                    type="button"
+                    class="breu-slot-change"
+                    data-caster="arcanista"
+                    data-circle="{{circulo}}"
+                    data-delta="1"
+                    title="Recuperar Espaço"
+                  >
+                    +
+                  </button>
+
+                </div>
+
+              </div>
+
+            {{/each}}
+
+          </div>
+
+
+          <div class="breu-magic-profile-footer">
+
+            <span>
+
+              Preparados:
+              <strong>
+                {{magiaUI.arcanista.preparados}}
+                /
+                {{magiaUI.arcanista.limitePreparados}}
+              </strong>
+
+            </span>
+
+
+            <button
+              type="button"
+              class="breu-magic-restore"
+              data-caster="arcanista"
+              title="Restaurar todos os Espaços"
+            >
+
+              <i class="fa-solid fa-rotate-left"></i>
+
+              Restaurar
+
+            </button>
+
+          </div>
+
+        </section>
+
+      {{/if}}
+
+
+      
+
+      {{#if magiaUI.profeta.ativo}}
+
+        <section class="breu-magic-profile breu-magic-profile-profeta">
+
+          <header class="breu-magic-profile-header">
+
+            <div>
+
+              <h3>
+                Profeta
+              </h3>
+
+              <span>
+                Nível {{magiaUI.profeta.nivel}}
+              </span>
+
+            </div>
+
+          </header>
+
+
+          <label class="breu-magic-lore-field">
+
+            <span>
+              Crença
+            </span>
+
+            <textarea
+              name="system.magia.profeta.crenca"
+              rows="3"
+              placeholder="Descreva sua Crença e sua relação com a Entidade..."
+            >{{system.magia.profeta.crenca}}</textarea>
+
+          </label>
+
+
+          <div class="breu-prophet-principles">
+
+            <label>
+
+              <span>
+                Dever
+              </span>
+
+              <input
+                type="text"
+                name="system.magia.profeta.dever"
+                value="{{system.magia.profeta.dever}}"
+                placeholder="O que deve fazer?"
+              >
+
+            </label>
+
+
+            <label>
+
+              <span>
+                Proibição
+              </span>
+
+              <input
+                type="text"
+                name="system.magia.profeta.proibicao"
+                value="{{system.magia.profeta.proibicao}}"
+                placeholder="O que nunca deve fazer?"
+              >
+
+            </label>
+
+          </div>
+
+
+          <div class="breu-magic-form">
+
+            <span class="breu-magic-form-title">
+              Forma de Conjuração
+            </span>
+
+
+            <div class="breu-magic-form-actions">
+
+              <label>
+
+                <span>
+                  I
+                </span>
+
+                <input
+                  type="text"
+                  name="system.magia.profeta.forma1"
+                  value="{{system.magia.profeta.forma1}}"
+                  placeholder="Primeira ação"
+                >
+
+              </label>
+
+
+              <label>
+
+                <span>
+                  II
+                </span>
+
+                <input
+                  type="text"
+                  name="system.magia.profeta.forma2"
+                  value="{{system.magia.profeta.forma2}}"
+                  placeholder="Segunda ação"
+                >
+
+              </label>
+
+            </div>
+
+          </div>
+
+
+          
+
+          <div class="breu-magic-primary-stats">
+
+
+            <button
+              type="button"
+              class="breu-magic-main-stat breu-magic-test"
+              data-caster="profeta"
+              title="Realizar Teste de Magia"
+            >
+
+              <span>
+                Teste Mágico
+              </span>
+
+              <strong>
+                {{#if magiaUI.profeta.teste}}
+                  +{{magiaUI.profeta.teste}}
+                {{else}}
+                  {{magiaUI.profeta.teste}}
+                {{/if}}
+              </strong>
+
+              <small>
+                SAB + BP
+              </small>
+
+            </button>
+
+
+            <div class="breu-magic-main-stat">
+
+              <span>
+                Potência Mágica
+              </span>
+
+              <strong>
+                {{system.conjuracao.profeta.potencia}}
+              </strong>
+
+              <small>
+                12 + Nível de Profeta
+              </small>
+
+            </div>
+
+          </div>
+
+
+          
+
+          <div class="breu-magic-circle-title">
+            Espaços de Magia
+          </div>
+
+
+          <div class="breu-magic-circles">
+
+            {{#each magiaUI.profeta.espacos}}
+
+              <div class="breu-magic-circle">
+
+                <strong>
+                  {{circulo}}º
+                </strong>
+
+
+                <div class="breu-magic-circle-counter">
+
+                  <button
+                    type="button"
+                    class="breu-slot-change"
+                    data-caster="profeta"
+                    data-circle="{{circulo}}"
+                    data-delta="-1"
+                    title="Gastar Espaço"
+                  >
+                    −
+                  </button>
+
+
+                  <input
+                    type="number"
+                    name="{{path}}"
+                    value="{{atual}}"
+                    min="0"
+                    max="{{max}}"
+                  >
+
+
+                  <span>
+                    /
+                  </span>
+
+
+                  <b>
+                    {{max}}
+                  </b>
+
+
+                  <button
+                    type="button"
+                    class="breu-slot-change"
+                    data-caster="profeta"
+                    data-circle="{{circulo}}"
+                    data-delta="1"
+                    title="Recuperar Espaço"
+                  >
+                    +
+                  </button>
+
+                </div>
+
+              </div>
+
+            {{/each}}
+
+          </div>
+
+
+          <div class="breu-magic-profile-footer">
+
+            <span>
+
+              Milagres conhecidos:
+              <strong>
+                {{milagres.length}}
+              </strong>
+
+            </span>
+
+
+            <button
+              type="button"
+              class="breu-magic-restore"
+              data-caster="profeta"
+              title="Restaurar todos os Espaços"
+            >
+
+              <i class="fa-solid fa-rotate-left"></i>
+
+              Restaurar
+
+            </button>
+
+          </div>
+
+        </section>
+
+      {{/if}}
+
+    </div>
+
+
+    
+
+    {{#if magiaUI.temConjurador}}
+
+      <section class="breu-known-magic">
+
+        <div class="breu-known-magic-title">
+
+          <h2>
+            Magias Conhecidas
+          </h2>
+
+        </div>
+
+
+        
+
+        {{#if magiaUI.arcanista.ativo}}
+
+          <div class="breu-known-magic-block">
+
+            <header>
+
+              <div>
+
+                <h3>
+                  Feitiços
+                </h3>
+
+                <span>
+
+                  {{feiticos.length}} conhecidos ·
+                  {{magiaUI.arcanista.preparados}} preparados
+
+                </span>
+
+              </div>
+
+
+              <button
+                type="button"
+                class="breu-magic-create"
+                data-magic-type="feitico"
+                title="Adicionar Feitiço"
+              >
+
+                <i class="fa-solid fa-plus"></i>
+
+              </button>
+
+            </header>
+
+
+            {{#if magiaUI.arcanista.excedeuPreparados}}
+
+              <div class="breu-magic-warning">
+
+                Há mais Feitiços preparados do que o limite atual.
+
+              </div>
+
+            {{/if}}
+
+
+            <div class="breu-known-magic-header breu-known-spell-grid">
+
+              <span>
+                Magia
+              </span>
+
+              <span>
+                Círculo
+              </span>
+
+              <span>
+                Tempo
+              </span>
+
+              <span>
+                Preparado
+              </span>
+
+              <span></span>
+
+            </div>
+
+
+            <div class="breu-known-magic-list">
+
+              {{#each feiticos}}
+
+                <div
+                  class="breu-known-magic-row breu-known-spell-grid"
+                  data-item-id="{{id}}"
+                  draggable="true"
+                >
+
+                  <button
+                    type="button"
+                    class="breu-magic-open breu-known-magic-name"
+                    data-item-id="{{id}}"
+                  >
+                    {{name}}
+                  </button>
+
+
+                  <span>
+                    {{circulo}}º
+                  </span>
+
+
+                  <span>
+                    {{tempo}}
+                  </span>
+
+
+                  <label class="breu-magic-prepared">
+
+                    <input
+                      type="checkbox"
+                      class="breu-spell-prepared"
+                      data-item-id="{{id}}"
+                      {{checked preparada}}
+                    >
+
+                  </label>
+
+
+                  <div class="breu-known-magic-actions">
+
+                    <button
+                      type="button"
+                      class="breu-magic-cast"
+                      data-item-id="{{id}}"
+                      title="Conjurar {{name}}"
+                    >
+
+                      <i class="fa-solid fa-wand-sparkles"></i>
+
+                    </button>
+
+
+                    <button
+                      type="button"
+                      class="breu-magic-delete"
+                      data-item-id="{{id}}"
+                      title="Excluir {{name}}"
+                    >
+
+                      <i class="fa-solid fa-trash"></i>
+
+                    </button>
+
+                  </div>
+
+                </div>
+
+
+              {{else}}
+
+                <div class="breu-known-magic-empty">
+
+                  Nenhum Feitiço conhecido.
+
+                </div>
+
+              {{/each}}
+
+            </div>
+
+          </div>
+
+        {{/if}}
+
+
+        
+
+        {{#if magiaUI.profeta.ativo}}
+
+          <div class="breu-known-magic-block">
+
+            <header>
+
+              <div>
+
+                <h3>
+                  Milagres
+                </h3>
+
+                <span>
+                  {{milagres.length}} conhecidos
+                </span>
+
+              </div>
+
+
+              <button
+                type="button"
+                class="breu-magic-create"
+                data-magic-type="milagre"
+                title="Adicionar Milagre"
+              >
+
+                <i class="fa-solid fa-plus"></i>
+
+              </button>
+
+            </header>
+
+
+            <div class="breu-known-magic-header breu-known-miracle-grid">
+
+              <span>
+                Magia
+              </span>
+
+              <span>
+                Círculo
+              </span>
+
+              <span>
+                Tempo
+              </span>
+
+              <span></span>
+
+            </div>
+
+
+            <div class="breu-known-magic-list">
+
+              {{#each milagres}}
+
+                <div
+                  class="breu-known-magic-row breu-known-miracle-grid"
+                  data-item-id="{{id}}"
+                  draggable="true"
+                >
+
+                  <button
+                    type="button"
+                    class="breu-magic-open breu-known-magic-name"
+                    data-item-id="{{id}}"
+                  >
+                    {{name}}
+                  </button>
+
+
+                  <span>
+                    {{circulo}}º
+                  </span>
+
+
+                  <span>
+                    {{tempo}}
+                  </span>
+
+
+                  <div class="breu-known-magic-actions">
+
+                    <button
+                      type="button"
+                      class="breu-magic-cast"
+                      data-item-id="{{id}}"
+                      title="Conjurar {{name}}"
+                    >
+
+                      <i class="fa-solid fa-wand-sparkles"></i>
+
+                    </button>
+
+
+                    <button
+                      type="button"
+                      class="breu-magic-delete"
+                      data-item-id="{{id}}"
+                      title="Excluir {{name}}"
+                    >
+
+                      <i class="fa-solid fa-trash"></i>
+
+                    </button>
+
+                  </div>
+
+                </div>
+
+
+              {{else}}
+
+                <div class="breu-known-magic-empty">
+
+                  Nenhum Milagre conhecido.
+
+                </div>
+
+              {{/each}}
+
+            </div>
+
+          </div>
+
+        {{/if}}
+
+      </section>
+
+    {{/if}}
+
+  </section>
+
+</div>
+    
+
+<div
+  class="breu-tab-panel {{#if tabs.anotacoes}}is-active{{/if}}"
+  data-tab="anotacoes"
+>
+
+  <section class="breu-notes-dashboard">
+
+
+    
+
+    <header class="breu-notes-dashboard-header">
+
+      <div>
+
+        <h2>
+          Anotações
+        </h2>
+
+        <span>
+          Idiomas, descrição e registros da aventura.
+        </span>
+
+      </div>
+
+    </header>
+
+
+    
+
+    <section class="breu-notes-language-card">
+
+      <div class="breu-notes-section-heading">
+
+        <div>
+
+          <i class="fa-solid fa-language"></i>
+
+          <h3>
+            Idiomas
+          </h3>
+
+        </div>
+
+      </div>
+
+
+      <div class="breu-notes-language-grid">
+
+
+        <label>
+
+          <span>
+            Idioma Natal
+          </span>
+
+          <input
+            type="text"
+            name="system.idiomas.natal"
+            value="{{system.idiomas.natal}}"
+            placeholder="Idioma natal"
+          >
+
+        </label>
+
+
+        <label>
+
+          <span>
+            Outros Idiomas
+          </span>
+
+          <input
+            type="text"
+            name="system.idiomas.outros"
+            value="{{system.idiomas.outros}}"
+            placeholder="Idiomas adicionais..."
+          >
+
+        </label>
+
+
+      </div>
+
+    </section>
+
+
+    
+
+    <div class="breu-notes-reference-grid">
+
+
+      
+
+      <section class="breu-notes-card">
+
+        <div class="breu-notes-section-heading">
+
+          <div>
+
+            <i class="fa-solid fa-user"></i>
+
+            <h3>
+              Aparência &amp; Descrição
+            </h3>
+
+          </div>
+
+        </div>
+
+
+        <textarea
+          class="breu-notes-card-textarea"
+          name="system.heranca.descricao"
+          rows="8"
+          placeholder="Aparência, roupas, marcas, cicatrizes, maneirismos e outros detalhes..."
+        >{{system.heranca.descricao}}</textarea>
+
+      </section>
+
+
+      
+
+      <section class="breu-notes-card">
+
+        <div class="breu-notes-section-heading">
+
+          <div>
+
+            <i class="fa-solid fa-map-location-dot"></i>
+
+            <h3>
+              Pessoas, Lugares &amp; Pistas
+            </h3>
+
+          </div>
+
+        </div>
+
+
+        <textarea
+          class="breu-notes-card-textarea"
+          name="system.anotacoes.pessoasLugaresPistas"
+          rows="8"
+          placeholder="NPCs, locais importantes, rumores, pistas, nomes e conexões..."
+        >{{system.anotacoes.pessoasLugaresPistas}}</textarea>
+
+      </section>
+
+
+    </div>
+
+
+    
+
+    <section class="breu-notes-card breu-notes-main-card">
+
+      <div class="breu-notes-section-heading">
+
+        <div>
+
+          <i class="fa-solid fa-book-open"></i>
+
+          <h3>
+            Registros da Aventura
+          </h3>
+
+        </div>
+
+
+        <span class="breu-notes-section-detail">
+          Notas gerais
+        </span>
+
+      </div>
+
+
+      <textarea
+        class="breu-notes-card-textarea breu-notes-main-textarea"
+        name="system.anotacoes.gerais"
+        rows="14"
+        placeholder="Anotações gerais da aventura..."
+      >{{system.anotacoes.gerais}}</textarea>
+
+    </section>
+
+
+  </section>
+
+</div>
+  
+
+  </div>
+
+</div>

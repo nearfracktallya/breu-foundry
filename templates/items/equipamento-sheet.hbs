@@ -1,0 +1,469 @@
+<div class="breu-equipamento breu-equipamento-redesign">
+
+  <header class="breu-item-hero">
+
+    <div
+      class="breu-item-hero-image"
+      title="Imagem do equipamento"
+    >
+      <img
+        src="{{item.img}}"
+        alt="{{item.name}}"
+        data-action="editImage"
+        data-edit="img"
+      >
+
+      <span>
+        <i class="fa-solid fa-image"></i>
+      </span>
+    </div>
+
+    <div class="breu-item-hero-copy">
+
+      <img
+        class="breu-item-brand"
+        src="systems/breu/assets/logo-breu.png"
+        alt=""
+        aria-hidden="true"
+      >
+
+      <span class="breu-item-kicker">
+        {{resumoEquipamento.categoria}}
+      </span>
+
+      <input
+        class="breu-item-hero-name"
+        type="text"
+        name="name"
+        value="{{item.name}}"
+        placeholder="Nome do equipamento"
+      >
+
+      <div class="breu-item-hero-tags">
+
+        <span>
+          {{resumoEquipamento.localizacao}}
+        </span>
+
+        {{#if isArma}}
+
+          <span>
+            {{resumoEquipamento.tipoArma}}
+          </span>
+
+          <span>
+            {{resumoEquipamento.proficiencia}}
+          </span>
+
+          {{#if system.arma.arco}}
+            <span>
+              Arco
+            </span>
+          {{/if}}
+
+          {{#if resumoEquipamento.favorita}}
+            <span class="breu-favorite-weapon-tag">
+              <i class="fa-solid fa-star"></i>
+              Arma Favorita
+            </span>
+          {{/if}}
+
+        {{/if}}
+
+
+        {{#if isProtecao}}
+
+          <span>
+            {{resumoEquipamento.protecao}}
+          </span>
+
+        {{/if}}
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <section class="breu-item-card">
+
+    <div class="breu-item-card-title">
+      <div>
+        <i class="fa-solid fa-box"></i>
+        <h2>Equipamento</h2>
+      </div>
+    </div>
+
+    <div class="breu-item-primary-grid">
+
+      <label>
+        <span>Categoria</span>
+
+        <select name="system.categoria">
+          {{selectOptions
+            categorias
+            selected=system.categoria
+          }}
+        </select>
+      </label>
+
+      <label>
+        <span>Localização</span>
+
+        <select name="system.localizacao">
+          {{selectOptions
+            localizacoes
+            selected=system.localizacao
+          }}
+        </select>
+      </label>
+
+      <label>
+        <span>Quantidade</span>
+
+        <input
+          type="number"
+          name="system.quantidade"
+          value="{{system.quantidade}}"
+          min="0"
+        >
+      </label>
+
+      <label>
+        <span>Carga</span>
+
+        <input
+          type="number"
+          name="system.carga"
+          value="{{system.carga}}"
+          min="0"
+        >
+      </label>
+
+      <label>
+        <span>Preço</span>
+
+        <input
+          type="number"
+          name="system.preco"
+          value="{{system.preco}}"
+          min="0"
+        >
+      </label>
+
+    </div>
+
+    <div class="breu-item-helper">
+      <i class="fa-solid fa-circle-info"></i>
+
+      <span>
+        A localização determina em qual seção do inventário
+        o equipamento será exibido.
+      </span>
+    </div>
+
+  </section>
+
+
+  <section class="breu-item-card">
+
+    <div class="breu-item-card-title">
+      <div>
+        <i class="fa-solid fa-weight-hanging"></i>
+        <h2>Uso &amp; Carga</h2>
+      </div>
+    </div>
+
+    <div class="breu-item-toggle-grid">
+
+      <label class="breu-item-toggle">
+
+        <input
+          type="checkbox"
+          name="system.equipado"
+          {{checked system.equipado}}
+        >
+
+        <span>
+          <strong>Equipado</strong>
+          <small>O item está em uso.</small>
+        </span>
+
+      </label>
+
+      <label class="breu-item-toggle">
+
+        <input
+          type="checkbox"
+          name="system.cargaAgrupada"
+          {{checked system.cargaAgrupada}}
+        >
+
+        <span>
+          <strong>Carga agrupada (*)</strong>
+          <small>Usa a regra de carga agrupada.</small>
+        </span>
+
+      </label>
+
+      <label class="breu-item-toggle">
+
+        <input
+          type="checkbox"
+          name="system.ignoraCargaEquipado"
+          {{checked system.ignoraCargaEquipado}}
+        >
+
+        <span>
+          <strong>Ignora Carga equipado (**)</strong>
+          <small>Não conta Carga enquanto equipado.</small>
+        </span>
+
+      </label>
+
+      <label class="breu-item-toggle">
+
+        <input
+          type="checkbox"
+          name="system.mochila"
+          {{checked system.mochila}}
+        >
+
+        <span>
+          <strong>É uma Mochila</strong>
+          <small>Concede capacidade adicional quando equipada.</small>
+        </span>
+
+      </label>
+
+    </div>
+
+  </section>
+
+
+  {{#if isArma}}
+
+    <section class="breu-item-card breu-item-weapon-card">
+
+      <div class="breu-item-card-title">
+        <div>
+          <i class="fa-solid fa-khanda"></i>
+          <h2>Arma</h2>
+        </div>
+      </div>
+
+      <div class="breu-item-weapon-grid">
+
+        <label>
+          <span>Tipo</span>
+
+          <select name="system.arma.tipo">
+            {{selectOptions
+              tiposArma
+              selected=system.arma.tipo
+            }}
+          </select>
+        </label>
+
+        <label>
+          <span>Proficiência</span>
+
+          <select
+            name="system.arma.categoriaProficiencia"
+          >
+            {{selectOptions
+              proficiencias
+              selected=system.arma.categoriaProficiencia
+            }}
+          </select>
+        </label>
+
+        <label>
+          <span>Dano</span>
+
+          <input
+            type="text"
+            name="system.arma.dano"
+            value="{{system.arma.dano}}"
+            placeholder="1d8"
+          >
+        </label>
+
+        <label>
+          <span>Alcance</span>
+
+          <input
+            type="text"
+            name="system.arma.alcance"
+            value="{{system.arma.alcance}}"
+            placeholder="Toque"
+          >
+        </label>
+
+      </div>
+
+      <div class="breu-item-rule-toggle-grid">
+
+        <label class="breu-item-special-toggle">
+
+          <input
+            type="checkbox"
+            name="system.arma.proficienciaEspecial"
+            {{checked system.arma.proficienciaEspecial}}
+          >
+
+          <span>
+            <strong>Proficiência especial</strong>
+            <small>
+              Marque para a arma marcial escolhida ou outra exceção válida.
+            </small>
+          </span>
+
+        </label>
+
+
+        <label class="breu-item-special-toggle">
+
+          <input
+            type="checkbox"
+            name="system.arma.arco"
+            {{checked system.arma.arco}}
+          >
+
+          <span>
+            <strong>É um arco</strong>
+            <small>
+              Especialistas são proficientes com todos os arcos.
+            </small>
+          </span>
+
+        </label>
+
+
+        <label class="breu-item-special-toggle breu-favorite-weapon-toggle">
+
+          <input
+            type="checkbox"
+            name="system.arma.favorita"
+            {{checked system.arma.favorita}}
+          >
+
+          <span>
+            <strong>Arma Favorita</strong>
+            <small>
+              Combatente 2+. Apenas uma arma específica pode ser a favorita.
+            </small>
+          </span>
+
+        </label>
+
+      </div>
+
+      <label class="breu-item-wide-field">
+        <span>Propriedades</span>
+
+        <textarea
+          name="system.arma.propriedades"
+          rows="3"
+          placeholder="Fluida, Leve, Versátil..."
+        >{{system.arma.propriedades}}</textarea>
+      </label>
+
+    </section>
+
+  {{/if}}
+
+
+  {{#if isProtecao}}
+
+    <section class="breu-item-card breu-item-protection-card">
+
+      <div class="breu-item-card-title">
+        <div>
+          <i class="fa-solid fa-shield-halved"></i>
+          <h2>Proteção</h2>
+        </div>
+      </div>
+
+      <div class="breu-item-protection-grid">
+
+        {{#if isArmadura}}
+
+          <label class="breu-item-protection-field">
+
+            <span>
+              Tipo de Armadura
+            </span>
+
+            <select name="system.protecao.tipoArmadura">
+
+              {{selectOptions
+                tiposArmadura
+                selected=system.protecao.tipoArmadura
+              }}
+
+            </select>
+
+          </label>
+
+        {{/if}}
+
+
+        <label class="breu-item-protection-stat">
+
+          <span>Bônus de CA</span>
+
+          <input
+            type="number"
+            name="system.protecao.ca"
+            value="{{system.protecao.ca}}"
+            min="0"
+          >
+
+        </label>
+
+      </div>
+
+
+      <label class="breu-item-special-toggle breu-item-protection-special">
+
+        <input
+          type="checkbox"
+          name="system.protecao.proficienciaEspecial"
+          {{checked system.protecao.proficienciaEspecial}}
+        >
+
+        <span>
+          <strong>Proficiência especial</strong>
+          <small>
+            Use apenas quando alguma regra específica permitir esta proteção.
+          </small>
+        </span>
+
+      </label>
+
+    </section>
+
+  {{/if}}
+
+
+  <section class="breu-item-card breu-item-description-card">
+
+    <div class="breu-item-card-title">
+      <div>
+        <i class="fa-solid fa-align-left"></i>
+        <h2>Descrição</h2>
+      </div>
+    </div>
+
+    <textarea
+      class="breu-item-description"
+      name="system.descricao"
+      rows="7"
+      placeholder="Descrição do equipamento..."
+    >{{system.descricao}}</textarea>
+
+  </section>
+
+</div>

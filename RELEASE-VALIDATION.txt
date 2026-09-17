@@ -1,0 +1,10 @@
+BREU release validation
+Version: 0.9.0-beta.1
+
+MJS checked: 11
+JSON checked: 2
+HBS checked: 4
+CSS checked: 2
+Socket: enabled
+Obsolete Item types: removed
+Development markers: clean

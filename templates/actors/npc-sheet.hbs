@@ -1,0 +1,1402 @@
+<div class="breu-npc breu-npc-redesign">
+
+  
+
+  <header class="breu-npc-header">
+
+    <div class="breu-npc-heading">
+
+      <select
+        class="breu-npc-category"
+        name="system.categoria"
+        title="Categoria da criatura"
+      >
+
+        <option
+          value="Animais"
+          {{#if (eq system.categoria "Animais")}}selected{{/if}}
+        >
+          Animais
+        </option>
+
+        <option
+          value="Animais Monstruosos"
+          {{#if (eq system.categoria "Animais Monstruosos")}}selected{{/if}}
+        >
+          Animais Monstruosos
+        </option>
+
+        <option
+          value="Humanoides e Organizações"
+          {{#if (eq system.categoria "Humanoides e Organizações")}}selected{{/if}}
+        >
+          Humanoides e Organizações
+        </option>
+
+        <option
+          value="Monstros"
+          {{#if (eq system.categoria "Monstros")}}selected{{/if}}
+        >
+          Monstros
+        </option>
+
+        <option
+          value="Monstros e Criaturas Clássicas"
+          {{#if (eq system.categoria "Monstros e Criaturas Clássicas")}}selected{{/if}}
+        >
+          Monstros e Criaturas Clássicas
+        </option>
+
+        <option
+          value="Monstruosidades de BREU"
+          {{#if (eq system.categoria "Monstruosidades de BREU")}}selected{{/if}}
+        >
+          Monstruosidades de BREU
+        </option>
+
+        <option
+          value="Monstruosidade"
+          {{#if (eq system.categoria "Monstruosidade")}}selected{{/if}}
+        >
+          Monstruosidade
+        </option>
+
+      </select>
+
+
+      <input
+        class="breu-npc-name"
+        type="text"
+        name="name"
+        value="{{actor.name}}"
+        placeholder="Nome da criatura"
+      >
+
+    </div>
+
+
+    <div
+      class="breu-npc-brand"
+      aria-hidden="true"
+    >
+
+      <img
+        src="systems/breu/assets/logo-breu.png"
+        alt=""
+      >
+
+    </div>
+
+
+    <div class="breu-npc-portrait-wrap">
+
+      <img
+        class="breu-npc-portrait"
+        src="{{actor.img}}"
+        alt="{{actor.name}}"
+        data-action="editImage"
+        data-edit="img"
+        title="Alterar ilustração"
+      >
+
+    </div>
+
+  </header>
+
+
+  
+
+  <nav
+    class="breu-npc-tabs breu-npc-tabs-four"
+    role="tablist"
+  >
+
+    <button
+      type="button"
+      class="breu-npc-tab-button {{#if tabs.criatura}}is-active{{/if}}"
+      data-tab="criatura"
+      role="tab"
+      aria-selected="{{tabs.criatura}}"
+    >
+
+      <i class="fa-solid fa-dragon"></i>
+
+      <span>
+        Criatura
+      </span>
+
+    </button>
+
+
+    <button
+      type="button"
+      class="breu-npc-tab-button {{#if tabs.habilidades}}is-active{{/if}}"
+      data-tab="habilidades"
+      role="tab"
+      aria-selected="{{tabs.habilidades}}"
+    >
+
+      <i class="fa-solid fa-bolt"></i>
+
+      <span>
+        Habilidades
+      </span>
+
+    </button>
+
+
+    <button
+      type="button"
+      class="breu-npc-tab-button {{#if tabs.magias}}is-active{{/if}}"
+      data-tab="magias"
+      role="tab"
+      aria-selected="{{tabs.magias}}"
+    >
+
+      <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+      <span>
+        Magias
+      </span>
+
+    </button>
+
+
+    <button
+      type="button"
+      class="breu-npc-tab-button {{#if tabs.criacao}}is-active{{/if}}"
+      data-tab="criacao"
+      role="tab"
+      aria-selected="{{tabs.criacao}}"
+    >
+
+      <i class="fa-solid fa-hammer"></i>
+
+      <span>
+        Criação
+      </span>
+
+    </button>
+
+  </nav>
+
+
+  <div class="breu-npc-tab-content">
+
+
+    
+
+    <div
+      class="breu-npc-tab-panel {{#if tabs.criatura}}is-active{{/if}}"
+      data-tab="criatura"
+      role="tabpanel"
+    >
+
+
+      <section class="breu-section">
+
+        <div class="breu-npc-primary-grid">
+
+
+          <label>
+
+            <span>
+              DV
+            </span>
+
+            <input
+              type="number"
+              name="system.dv"
+              value="{{system.dv}}"
+              min="1"
+            >
+
+          </label>
+
+
+          <label>
+
+            <span>
+              BP
+            </span>
+
+            <input
+              type="number"
+              name="system.bp"
+              value="{{system.bp}}"
+              min="0"
+            >
+
+          </label>
+
+
+          <label>
+
+            <span>
+              CA
+            </span>
+
+            <input
+              type="number"
+              name="system.ca"
+              value="{{system.ca}}"
+              min="0"
+            >
+
+          </label>
+
+
+          <label>
+
+            <span>
+              CD
+            </span>
+
+            <input
+              type="number"
+              name="system.cd"
+              value="{{system.cd}}"
+              min="0"
+            >
+
+          </label>
+
+
+          <label>
+
+            <span>
+              Deslocamento
+            </span>
+
+            <select name="system.deslocamento">
+
+              <option
+                value="Nulo"
+                {{#if (eq system.deslocamento "Nulo")}}selected{{/if}}
+              >
+                Nulo
+              </option>
+
+              <option
+                value="Lento"
+                {{#if (eq system.deslocamento "Lento")}}selected{{/if}}
+              >
+                Lento
+              </option>
+
+              <option
+                value="Normal"
+                {{#if (eq system.deslocamento "Normal")}}selected{{/if}}
+              >
+                Normal
+              </option>
+
+              <option
+                value="Rápido"
+                {{#if (eq system.deslocamento "Rápido")}}selected{{/if}}
+              >
+                Rápido
+              </option>
+
+              <option
+                value="Mágico"
+                {{#if (eq system.deslocamento "Mágico")}}selected{{/if}}
+              >
+                Mágico
+              </option>
+
+            </select>
+
+          </label>
+
+
+          <div class="breu-npc-moral">
+
+            <label>
+
+              <span>
+                Moral
+              </span>
+
+              <input
+                type="number"
+                name="system.moral"
+                value="{{system.moral}}"
+                min="1"
+                max="12"
+              >
+
+            </label>
+
+
+            <button
+              type="button"
+              class="breu-npc-moral-roll"
+              title="Rolar Moral"
+            >
+
+              <i class="fa-solid fa-dice"></i>
+
+            </button>
+
+          </div>
+
+
+          <label>
+
+            <span>
+              Conjuração
+            </span>
+
+            <input
+              type="number"
+              name="system.conjuracao"
+              value="{{system.conjuracao}}"
+              min="0"
+              max="10"
+              title="Nível de Conjuração equivalente da criatura"
+            >
+
+          </label>
+
+
+          <label class="breu-npc-hp">
+
+            <span>
+              PV
+            </span>
+
+
+            <div>
+
+              <input
+                type="number"
+                name="system.vida.value"
+                value="{{system.vida.value}}"
+                min="0"
+              >
+
+              <b>
+                /
+              </b>
+
+              <input
+                type="number"
+                name="system.vida.max"
+                value="{{system.vida.max}}"
+                min="0"
+              >
+
+            </div>
+
+          </label>
+
+
+        </div>
+
+      </section>
+
+
+      <section class="breu-section">
+
+        <h2>
+          Perfil da Criatura
+        </h2>
+
+
+        <div class="breu-npc-basic-info">
+
+
+          <label>
+
+            <span>
+              Tamanho
+            </span>
+
+            <select name="system.tamanho">
+
+              <option value="Pequeno" {{#if (eq system.tamanho "Pequeno")}}selected{{/if}}>
+                Pequeno
+              </option>
+
+              <option value="Médio" {{#if (eq system.tamanho "Médio")}}selected{{/if}}>
+                Médio
+              </option>
+
+              <option value="Grande" {{#if (eq system.tamanho "Grande")}}selected{{/if}}>
+                Grande
+              </option>
+
+              <option value="Imenso" {{#if (eq system.tamanho "Imenso")}}selected{{/if}}>
+                Imenso
+              </option>
+
+              <option value="Gigante" {{#if (eq system.tamanho "Gigante")}}selected{{/if}}>
+                Gigante
+              </option>
+
+            </select>
+
+          </label>
+
+
+          <label>
+
+            <span>
+              Inteligência
+            </span>
+
+            <select name="system.inteligencia">
+
+              <option value="" {{#if (eq system.inteligencia "")}}selected{{/if}}>
+                —
+              </option>
+
+              <option value="Autômata" {{#if (eq system.inteligencia "Autômata")}}selected{{/if}}>
+                Autômata
+              </option>
+
+              <option value="Instintiva" {{#if (eq system.inteligencia "Instintiva")}}selected{{/if}}>
+                Instintiva
+              </option>
+
+              <option value="Reativa" {{#if (eq system.inteligencia "Reativa")}}selected{{/if}}>
+                Reativa
+              </option>
+
+              <option value="Adaptativa" {{#if (eq system.inteligencia "Adaptativa")}}selected{{/if}}>
+                Adaptativa
+              </option>
+
+              <option value="Estratégica" {{#if (eq system.inteligencia "Estratégica")}}selected{{/if}}>
+                Estratégica
+              </option>
+
+              <option value="Superior" {{#if (eq system.inteligencia "Superior")}}selected{{/if}}>
+                Superior
+              </option>
+
+            </select>
+
+          </label>
+
+
+          <label>
+
+            <span>
+              Comunicação
+            </span>
+
+            <select name="system.comunicacao">
+
+              <option value="" {{#if (eq system.comunicacao "")}}selected{{/if}}>
+                —
+              </option>
+
+              <option value="Nula" {{#if (eq system.comunicacao "Nula")}}selected{{/if}}>
+                Nula
+              </option>
+
+              <option value="Primordial" {{#if (eq system.comunicacao "Primordial")}}selected{{/if}}>
+                Primordial
+              </option>
+
+              <option value="Elementar" {{#if (eq system.comunicacao "Elementar")}}selected{{/if}}>
+                Elementar
+              </option>
+
+              <option value="Associativa" {{#if (eq system.comunicacao "Associativa")}}selected{{/if}}>
+                Associativa
+              </option>
+
+              <option value="Semiestrutural" {{#if (eq system.comunicacao "Semiestrutural")}}selected{{/if}}>
+                Semiestrutural
+              </option>
+
+              <option value="Estrutural" {{#if (eq system.comunicacao "Estrutural")}}selected{{/if}}>
+                Estrutural
+              </option>
+
+              <option value="Metaestrutural" {{#if (eq system.comunicacao "Metaestrutural")}}selected{{/if}}>
+                Metaestrutural
+              </option>
+
+              <option value="Transcendental" {{#if (eq system.comunicacao "Transcendental")}}selected{{/if}}>
+                Transcendental
+              </option>
+
+            </select>
+
+          </label>
+
+
+        </div>
+
+      </section>
+
+
+      <section class="breu-section">
+
+        <h2>
+          POD · REF · VON
+        </h2>
+
+
+        <div class="breu-npc-attributes">
+
+
+          <div class="breu-npc-attribute">
+
+            <strong>
+              POD
+            </strong>
+
+            <small>
+              Poder
+            </small>
+
+            <input
+              type="number"
+              name="system.atributos.pod"
+              value="{{system.atributos.pod}}"
+            >
+
+            <label class="breu-npc-tr-check">
+
+              <input
+                type="checkbox"
+                name="system.trs.pod"
+                {{checked system.trs.pod}}
+              >
+
+              <span>
+                TR
+              </span>
+
+            </label>
+
+            <button
+              type="button"
+              class="breu-npc-tr-roll"
+              data-attribute="pod"
+            >
+              {{system.tr.pod}}
+            </button>
+
+          </div>
+
+
+          <div class="breu-npc-attribute">
+
+            <strong>
+              REF
+            </strong>
+
+            <small>
+              Reflexos
+            </small>
+
+            <input
+              type="number"
+              name="system.atributos.ref"
+              value="{{system.atributos.ref}}"
+            >
+
+            <label class="breu-npc-tr-check">
+
+              <input
+                type="checkbox"
+                name="system.trs.ref"
+                {{checked system.trs.ref}}
+              >
+
+              <span>
+                TR
+              </span>
+
+            </label>
+
+            <button
+              type="button"
+              class="breu-npc-tr-roll"
+              data-attribute="ref"
+            >
+              {{system.tr.ref}}
+            </button>
+
+          </div>
+
+
+          <div class="breu-npc-attribute">
+
+            <strong>
+              VON
+            </strong>
+
+            <small>
+              Vontade
+            </small>
+
+            <input
+              type="number"
+              name="system.atributos.von"
+              value="{{system.atributos.von}}"
+            >
+
+            <label class="breu-npc-tr-check">
+
+              <input
+                type="checkbox"
+                name="system.trs.von"
+                {{checked system.trs.von}}
+              >
+
+              <span>
+                TR
+              </span>
+
+            </label>
+
+            <button
+              type="button"
+              class="breu-npc-tr-roll"
+              data-attribute="von"
+            >
+              {{system.tr.von}}
+            </button>
+
+          </div>
+
+
+        </div>
+
+      </section>
+
+
+      <section class="breu-section">
+
+        <h2>
+          Combate
+        </h2>
+
+
+        <div class="breu-npc-attacks-header">
+
+          <span>Ataque</span>
+          <span>Bônus</span>
+          <span>Dano</span>
+          <span>Observação</span>
+          <span></span>
+
+        </div>
+
+
+        <div class="breu-npc-attacks">
+
+
+          {{#each ataques}}
+
+            <div class="breu-npc-attack-row">
+
+              <input
+                type="text"
+                name="system.ataques.{{key}}.nome"
+                value="{{nome}}"
+                placeholder="Ataque {{numero}}"
+              >
+
+              <input
+                type="number"
+                name="system.ataques.{{key}}.bonus"
+                value="{{bonus}}"
+              >
+
+              <input
+                type="text"
+                name="system.ataques.{{key}}.dano"
+                value="{{dano}}"
+                placeholder="1d6+2"
+              >
+
+              <input
+                type="text"
+                name="system.ataques.{{key}}.observacao"
+                value="{{observacao}}"
+                placeholder="Alcance, efeito..."
+              >
+
+
+              <div class="breu-npc-attack-actions">
+
+                <button
+                  type="button"
+                  class="breu-npc-attack-roll"
+                  data-attack="{{key}}"
+                  title="Rolar Ataque"
+                >
+
+                  <i class="fa-solid fa-dice-d20"></i>
+
+                </button>
+
+
+                <button
+                  type="button"
+                  class="breu-npc-damage-roll"
+                  data-attack="{{key}}"
+                  title="Rolar Dano"
+                >
+
+                  <i class="fa-solid fa-burst"></i>
+
+                </button>
+
+              </div>
+
+            </div>
+
+          {{/each}}
+
+
+        </div>
+
+      </section>
+
+
+    </div>
+
+
+    
+
+    <div
+      class="breu-npc-tab-panel {{#if tabs.habilidades}}is-active{{/if}}"
+      data-tab="habilidades"
+      role="tabpanel"
+    >
+
+
+      <div class="breu-npc-abilities-intro">
+
+        <div>
+
+          <i class="fa-solid fa-bolt"></i>
+
+        </div>
+
+        <div>
+
+          <strong>
+            Habilidades da Criatura
+          </strong>
+
+          <span>
+            Registre poderes inatos, características base,
+            características eletivas e fraquezas.
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div class="breu-npc-abilities-grid">
+
+
+        <section class="breu-section">
+
+          <h2>
+            Características Básicas
+          </h2>
+
+          <textarea
+            class="breu-npc-large-text"
+            name="system.caracteristicasBasicas"
+            rows="9"
+            placeholder="Outras características básicas..."
+          >{{system.caracteristicasBasicas}}</textarea>
+
+        </section>
+
+
+        <section class="breu-section">
+
+          <h2>
+            Características Especiais
+          </h2>
+
+          <textarea
+            class="breu-npc-large-text"
+            name="system.caracteristicasEspeciais"
+            rows="9"
+            placeholder="Características especiais base e eletivas..."
+          >{{system.caracteristicasEspeciais}}</textarea>
+
+        </section>
+
+
+      </div>
+
+
+      <section class="breu-section">
+
+        <h2>
+          Vulnerabilidades
+        </h2>
+
+        <textarea
+          class="breu-npc-large-text"
+          name="system.vulnerabilidades"
+          rows="7"
+          placeholder="Vulnerabilidades base, eletivas e outras fraquezas..."
+        >{{system.vulnerabilidades}}</textarea>
+
+      </section>
+
+
+    </div>
+
+
+    
+
+    <div
+      class="breu-npc-tab-panel {{#if tabs.magias}}is-active{{/if}}"
+      data-tab="magias"
+      role="tabpanel"
+    >
+
+
+      <section class="breu-section breu-npc-magic-overview">
+
+        <div class="breu-npc-magic-overview-header">
+
+          <div>
+
+            <span>
+              Conjuração da Criatura
+            </span>
+
+            <strong>
+              {{system.conjuracao}}º Nível
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              CD da Criatura
+            </span>
+
+            <strong>
+              {{system.cd}}
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Magias
+            </span>
+
+            <strong>
+              {{totalMagias}}
+            </strong>
+
+          </div>
+
+
+          <div class="breu-npc-magic-overview-actions">
+
+            <button
+              type="button"
+              class="breu-npc-magic-create"
+            >
+
+              <i class="fa-solid fa-plus"></i>
+
+              <span>
+                Nova Magia
+              </span>
+
+            </button>
+
+
+            <button
+              type="button"
+              class="breu-npc-magic-restore"
+              title="Restaurar todos os Espaços ao máximo configurado"
+            >
+
+              <i class="fa-solid fa-rotate-left"></i>
+
+              <span>
+                Restaurar
+              </span>
+
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="breu-npc-magic-note">
+
+          <i class="fa-solid fa-circle-info"></i>
+
+          <span>
+            O Nível de Conjuração vai até 10.
+            As Magias continuam do 1º ao 5º Círculo.
+            Em criaturas, os Espaços são configurados manualmente,
+            pois o Gerador permite adquiri-los separadamente.
+          </span>
+
+        </div>
+
+      </section>
+
+
+      <section class="breu-section">
+
+        <h2>
+          Espaços de Magia
+        </h2>
+
+
+        <div class="breu-npc-spell-slots">
+
+
+          {{#each circulosMagia}}
+
+            <div class="breu-npc-spell-slot">
+
+              <span class="breu-npc-spell-slot-circle">
+                {{circulo}}º
+              </span>
+
+
+              <label>
+
+                <span>
+                  Atual
+                </span>
+
+                <input
+                  type="number"
+                  name="system.magia.espacos.{{key}}.value"
+                  value="{{value}}"
+                  min="0"
+                >
+
+              </label>
+
+
+              <span class="breu-npc-spell-slot-slash">
+                /
+              </span>
+
+
+              <label>
+
+                <span>
+                  Máx.
+                </span>
+
+                <input
+                  type="number"
+                  name="system.magia.espacos.{{key}}.max"
+                  value="{{max}}"
+                  min="0"
+                >
+
+              </label>
+
+            </div>
+
+          {{/each}}
+
+
+        </div>
+
+      </section>
+
+
+      <section class="breu-section breu-npc-magic-library">
+
+        <div class="breu-npc-magic-library-title">
+
+          <h2>
+            Magias Conhecidas
+          </h2>
+
+          <span>
+            Feitiços e Milagres adicionados à criatura.
+          </span>
+
+        </div>
+
+
+        {{#each circulosMagia}}
+
+          <div class="breu-npc-magic-circle">
+
+            <div class="breu-npc-magic-circle-header">
+
+              <strong>
+                {{circulo}}º Círculo
+              </strong>
+
+              <span>
+                {{value}} / {{max}} Espaços
+              </span>
+
+            </div>
+
+
+            <div class="breu-npc-magic-list">
+
+
+              {{#each magias}}
+
+                <div class="breu-npc-magic-row">
+
+                  <img
+                    src="{{img}}"
+                    alt="{{name}}"
+                  >
+
+
+                  <div class="breu-npc-magic-row-copy">
+
+                    <strong>
+                      {{name}}
+                    </strong>
+
+                    <span>
+
+                      {{tipoLabel}}
+
+                      {{#if tempo}}
+                        · {{tempo}}
+                      {{/if}}
+
+                      {{#if alcance}}
+                        · {{alcance}}
+                      {{/if}}
+
+                    </span>
+
+                  </div>
+
+
+                  <div class="breu-npc-magic-row-actions">
+
+                    <button
+                      type="button"
+                      class="breu-npc-magic-cast"
+                      data-item-id="{{id}}"
+                      title="Conjurar"
+                    >
+
+                      <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                    </button>
+
+
+                    <button
+                      type="button"
+                      class="breu-npc-magic-open"
+                      data-item-id="{{id}}"
+                      title="Abrir Magia"
+                    >
+
+                      <i class="fa-solid fa-pen-to-square"></i>
+
+                    </button>
+
+
+                    <button
+                      type="button"
+                      class="breu-npc-magic-delete"
+                      data-item-id="{{id}}"
+                      title="Excluir Magia"
+                    >
+
+                      <i class="fa-solid fa-trash"></i>
+
+                    </button>
+
+                  </div>
+
+                </div>
+
+              {{else}}
+
+                <div class="breu-npc-magic-empty">
+                  Nenhuma Magia deste Círculo.
+                </div>
+
+              {{/each}}
+
+
+            </div>
+
+          </div>
+
+        {{/each}}
+
+
+      </section>
+
+
+    </div>
+
+
+    
+
+    <div
+      class="breu-npc-tab-panel {{#if tabs.criacao}}is-active{{/if}}"
+      data-tab="criacao"
+      role="tabpanel"
+    >
+
+
+      <section class="breu-section">
+
+        <h2>
+          Controle de Criação
+        </h2>
+
+
+        <div class="breu-npc-creation-summary">
+
+
+          <div class="breu-npc-points-left">
+
+            <span>
+              DV usados
+            </span>
+
+            <strong>
+              {{system.dv}}
+            </strong>
+
+          </div>
+
+
+          <label>
+
+            <span>
+              Pontos
+            </span>
+
+            <input
+              type="number"
+              name="system.pontos.total"
+              value="{{system.pontos.total}}"
+              min="0"
+            >
+
+          </label>
+
+
+          <label>
+
+            <span>
+              Gastos
+            </span>
+
+            <input
+              type="number"
+              name="system.pontos.gastos"
+              value="{{system.pontos.gastos}}"
+              min="0"
+            >
+
+          </label>
+
+
+          <div class="breu-npc-points-left">
+
+            <span>
+              Restantes
+            </span>
+
+            <strong>
+              {{system.pontosRestantes}}
+            </strong>
+
+          </div>
+
+
+        </div>
+
+      </section>
+
+
+      <section class="breu-section">
+
+        <h2>
+          Características Básicas · PTS.
+        </h2>
+
+
+        <div class="breu-npc-cost-grid">
+
+          <label>
+            <span>Tamanho</span>
+            <input type="number" name="system.custos.tamanho" value="{{system.custos.tamanho}}">
+          </label>
+
+          <label>
+            <span>POD</span>
+            <input type="number" name="system.custos.pod" value="{{system.custos.pod}}">
+          </label>
+
+          <label>
+            <span>REF</span>
+            <input type="number" name="system.custos.ref" value="{{system.custos.ref}}">
+          </label>
+
+          <label>
+            <span>VON</span>
+            <input type="number" name="system.custos.von" value="{{system.custos.von}}">
+          </label>
+
+          <label>
+            <span>PV</span>
+            <input type="number" name="system.custos.pv" value="{{system.custos.pv}}">
+          </label>
+
+          <label>
+            <span>CA</span>
+            <input type="number" name="system.custos.ca" value="{{system.custos.ca}}">
+          </label>
+
+          <label>
+            <span>Desloc.</span>
+            <input type="number" name="system.custos.deslocamento" value="{{system.custos.deslocamento}}">
+          </label>
+
+          <label>
+            <span>TRs</span>
+            <input type="number" name="system.custos.trs" value="{{system.custos.trs}}">
+          </label>
+
+          <label>
+            <span>Moral</span>
+            <input type="number" name="system.custos.moral" value="{{system.custos.moral}}">
+          </label>
+
+          <label>
+            <span>Especiais</span>
+            <input type="number" name="system.custos.especiais" value="{{system.custos.especiais}}">
+          </label>
+
+        </div>
+
+
+        <div class="breu-npc-creation-live">
+
+          <div>
+            <span>Tamanho</span>
+            <strong>{{system.tamanho}}</strong>
+          </div>
+
+          <div>
+            <span>POD</span>
+            <strong>{{system.atributos.pod}}</strong>
+          </div>
+
+          <div>
+            <span>REF</span>
+            <strong>{{system.atributos.ref}}</strong>
+          </div>
+
+          <div>
+            <span>VON</span>
+            <strong>{{system.atributos.von}}</strong>
+          </div>
+
+          <div>
+            <span>PV Máx.</span>
+            <strong>{{system.vida.max}}</strong>
+          </div>
+
+          <div>
+            <span>CA</span>
+            <strong>{{system.ca}}</strong>
+          </div>
+
+          <div>
+            <span>Desloc.</span>
+            <strong>{{system.deslocamento}}</strong>
+          </div>
+
+          <div>
+            <span>Moral</span>
+            <strong>{{system.moral}}</strong>
+          </div>
+
+          <div>
+            <span>Conjuração</span>
+            <strong>{{system.conjuracao}}º</strong>
+          </div>
+
+          <div>
+            <span>CD</span>
+            <strong>{{system.cd}}</strong>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <section class="breu-section">
+
+        <h2>
+          Características Básicas
+        </h2>
+
+        <div class="breu-npc-creation-preview">
+          {{system.caracteristicasBasicas}}
+        </div>
+
+      </section>
+
+
+      <section class="breu-section">
+
+        <h2>
+          Características Especiais
+        </h2>
+
+        <div class="breu-npc-creation-preview">
+          {{system.caracteristicasEspeciais}}
+        </div>
+
+      </section>
+
+
+      <section class="breu-section">
+
+        <h2>
+          Vulnerabilidades
+        </h2>
+
+        <div class="breu-npc-creation-preview">
+          {{system.vulnerabilidades}}
+        </div>
+
+      </section>
+
+
+    </div>
+
+  </div>
+
+</div>

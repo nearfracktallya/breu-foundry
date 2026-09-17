@@ -1,0 +1,12 @@
+{
+  "TYPES": {
+    "Actor": {
+      "personagem": "Personagem",
+      "npc": "PNJ / Criatura"
+    },
+    "Item": {
+      "equipamento": "Equipamento",
+      "magia": "Magia"
+    }
+  }
+}

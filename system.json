@@ -1,0 +1,39 @@
+{
+  "id": "breu",
+  "title": "BREU",
+  "description": "Implementação comunitária e não oficial de BREU para Foundry Virtual Tabletop. Beta pública: requer acesso ao livro BREU e não inclui o conteúdo completo das regras.",
+  "version": "0.9.0-beta.1",
+  "compatibility": {
+    "minimum": "14",
+    "verified": "14.359"
+  },
+  "authors": [
+    {
+      "name": "Near"
+    }
+  ],
+  "esmodules": [
+    "breu.mjs"
+  ],
+  "styles": [
+    "styles/breu.css"
+  ],
+  "languages": [
+    {
+      "lang": "pt-BR",
+      "name": "Português (Brasil)",
+      "path": "lang/pt-BR.json"
+    }
+  ],
+  "documentTypes": {
+    "Actor": {
+      "personagem": {},
+      "npc": {}
+    },
+    "Item": {
+      "equipamento": {},
+      "magia": {}
+    }
+  },
+  "socket": true
+}
