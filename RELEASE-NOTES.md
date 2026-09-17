@@ -12,3 +12,9 @@ Esta versão reúne a ficha completa de Personagem, Criaturas, Equipamentos, Mag
 - Compatibilidade verificada com Foundry VTT `14.359`.
 
 Veja `CHANGELOG.md` para a lista detalhada de recursos e correções.
+
+
+## Ajustes finais antes da publicação
+
+- O painel de Iniciativa BREU foi reposicionado para aparecer abaixo do cabeçalho de rodada do Combat Tracker.
+- O manifesto público e o download automático pelo GitHub foram configurados para esta release.

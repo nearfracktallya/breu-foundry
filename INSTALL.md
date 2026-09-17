@@ -1,24 +1,42 @@
 # Instalação
 
+## Instalação pelo manifesto
+
+No Foundry VTT:
+
+1. Abra a tela de **Configuração**.
+2. Entre em **Sistemas de Jogo**.
+3. Clique em **Instalar Sistema**.
+4. No campo de URL do manifesto, cole:
+
+   `https://raw.githubusercontent.com/nearfracktallya/breu-foundry/main/system.json`
+
+5. Confirme a instalação.
+
+O manifesto é estável e será usado também para verificar futuras atualizações do sistema.
+
 ## Instalação manual
 
-Esta beta pode ser distribuída como um arquivo ZIP do diretório do sistema. O Foundry VTT oferece instalação manual de sistemas extraindo o pacote na pasta `Data/systems/`.
-
 1. Feche o Foundry VTT.
-2. Extraia a pasta `breu` em `Data/systems/`.
-3. A estrutura final deve conter `Data/systems/breu/system.json`.
-4. Abra o Foundry VTT.
-5. Crie ou configure um mundo usando o sistema **BREU**.
+2. Baixe `breu-0.9.0-beta.1.zip` na página de Releases do projeto.
+3. Extraia o conteúdo em `Data/systems/breu/`.
+4. Confirme que a estrutura contém diretamente:
 
-## Atualização manual
+   `Data/systems/breu/system.json`
 
-Antes de atualizar, faça backup do mundo.
+5. Abra o Foundry VTT.
+6. Crie ou configure um mundo usando o sistema **BREU**.
 
-Para atualizar uma versão beta manualmente, substitua a pasta do sistema por uma versão nova. Não apague seu mundo: os dados de mundo ficam separados do diretório do sistema.
+## Atualização
 
-## Instalação por manifesto
+Antes de atualizar uma beta, faça backup do mundo.
 
-O `system.json` já está preparado como manifesto do sistema, mas a instalação automática exige URLs públicas estáveis para `url`, `manifest` e `download`. Esses campos devem ser adicionados quando o repositório e a primeira release pública do GitHub estiverem definidos.
+Se o sistema foi instalado pelo manifesto, use a opção de atualização do Foundry. O endereço de manifesto permanece o mesmo e aponta para a versão mais recente publicada.
 
-Versão do sistema: `0.9.0-beta.1`  
-Foundry verificado: `14.359`
+Em instalações manuais, substitua os arquivos da pasta `Data/systems/breu/` pelos da nova versão. Os dados dos mundos ficam separados do diretório do sistema.
+
+## Compatibilidade
+
+- Sistema: `0.9.0-beta.1`
+- Foundry VTT mínimo: `14`
+- Verificado em: `14.359`

@@ -67,14 +67,23 @@ O conteúdo usado na mesa deve ser criado pelo usuário a partir da sua própria
 - **Versão verificada:** 14.359
 - **Idioma:** Português (Brasil)
 
-## Instalação manual
+## Instalação
+
+### Pelo manifesto
+
+No Foundry VTT, abra **Configuração → Sistemas de Jogo → Instalar Sistema** e cole no campo de manifesto:
+
+`https://raw.githubusercontent.com/nearfracktallya/breu-foundry/main/system.json`
+
+O Foundry usará esse endereço para instalar a versão atual e verificar futuras atualizações.
+
+### Instalação manual
 
 1. Feche o Foundry VTT.
-2. Extraia a pasta `breu` em `Data/systems/` dentro da pasta de dados do Foundry.
-3. Confirme que `system.json` está diretamente em `Data/systems/breu/system.json`.
-4. Abra o Foundry e crie um mundo usando o sistema **BREU**.
-
-O Foundry também aceita distribuição por manifesto. Os campos `url`, `manifest` e `download` serão adicionados ao `system.json` quando o repositório público e a URL estável da release estiverem definidos.
+2. Baixe o arquivo `breu-0.9.0-beta.1.zip` na página de Releases.
+3. Extraia o conteúdo para `Data/systems/breu/`.
+4. Confirme que `system.json` está diretamente em `Data/systems/breu/system.json`.
+5. Abra o Foundry e crie um mundo usando o sistema BREU.
 
 ## Feedback e bugs
 

@@ -75,8 +75,17 @@ Primeira beta pública.
 - Tipografia global com Grenze e Grenze Gotisch.
 - Melhorias de consistência entre fichas de Personagem, Criatura, Equipamento e Magia.
 
+### Correções
+
+- Botões Cancelar de diálogos deixam de executar a ação correspondente.
+- Cancelamento corrigido em rolagens de Personagem, Criatura, Magia, Moral, descansos e Iniciativa.
+- Descanso Longo corrigido para concluir e atualizar a ficha corretamente.
+- Correção da ordem de identidade, card e dados no chat.
+- Preservação dos ícones do Foundry/Font Awesome após a aplicação da tipografia global.
+
 ### Distribuição
 
+- Removidos os tipos de Item antigos `beneficio`, `heranca` e `debilidade` do manifesto; essas informações pertencem ao Actor.
 - Socket do sistema habilitado para a iniciativa compartilhada.
 - Pacote não inclui compêndios nem conteúdo editorial do livro.
 - Adicionados README, documentação legal, licença do código, avisos de terceiros e modelo de bug report.
