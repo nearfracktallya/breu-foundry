@@ -1,6 +1,6 @@
 # BREU para Foundry VTT
 
-> **Beta pública · v0.9.0-beta.1 · Projeto comunitário não oficial**
+> **Beta pública · v0.9.0-beta.2 · Projeto comunitário não oficial**
 
 Implementação de **BREU** para **Foundry Virtual Tabletop v14**, mantida por **Near**.
 
@@ -26,7 +26,7 @@ Para criar personagens, consultar Benefícios, entender Magias, usar Criaturas e
 
 ## Estado da beta
 
-A versão `v0.9.0-beta.1` é a primeira beta pública. O sistema já é utilizável em mesa, mas ainda pode conter bugs, inconsistências visuais e casos de regra não cobertos pela automação.
+A versão `v0.9.0-beta.2` é a primeira beta pública. O sistema já é utilizável em mesa, mas ainda pode conter bugs, inconsistências visuais e casos de regra não cobertos pela automação.
 
 A filosofia da implementação é **automatizar contas repetitivas sem retirar da mesa decisões que pertencem à ficção ou à arbitragem**. Nem todo Benefício de Classe possui botão ou macro, e isso é intencional.
 
@@ -67,6 +67,16 @@ O conteúdo usado na mesa deve ser criado pelo usuário a partir da sua própria
 - **Versão verificada:** 14.359
 - **Idioma:** Português (Brasil)
 
+## Identidade visual
+
+O sistema inclui uma identidade visual própria para o Foundry VTT:
+
+- `breu-logo-colorido.jpg` é usado como arte de apresentação na tela de Sistemas de Jogo;
+- `capa_arte_original.jpg` é o fundo padrão de entrada para novos mundos BREU;
+- fichas, diálogos e chat utilizam a mesma paleta escura e tipografia do sistema.
+
+> Mundos já existentes podem manter o background configurado anteriormente. Nesse caso, a imagem pode ser selecionada manualmente nas configurações do mundo.
+
 ## Instalação
 
 ### Pelo manifesto
@@ -80,7 +90,7 @@ O Foundry usará esse endereço para instalar a versão atual e verificar futura
 ### Instalação manual
 
 1. Feche o Foundry VTT.
-2. Baixe o arquivo `breu-0.9.0-beta.1.zip` na página de Releases.
+2. Baixe o arquivo `breu-0.9.0-beta.2.zip` na página de Releases.
 3. Extraia o conteúdo para `Data/systems/breu/`.
 4. Confirme que `system.json` está diretamente em `Data/systems/breu/system.json`.
 5. Abra o Foundry e crie um mundo usando o sistema BREU.

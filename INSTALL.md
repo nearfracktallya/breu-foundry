@@ -18,7 +18,7 @@ O manifesto é estável e será usado também para verificar futuras atualizaç�
 ## Instalação manual
 
 1. Feche o Foundry VTT.
-2. Baixe `breu-0.9.0-beta.1.zip` na página de Releases do projeto.
+2. Baixe `breu-0.9.0-beta.2.zip` na página de Releases do projeto.
 3. Extraia o conteúdo em `Data/systems/breu/`.
 4. Confirme que a estrutura contém diretamente:
 
@@ -37,6 +37,6 @@ Em instalações manuais, substitua os arquivos da pasta `Data/systems/breu/` pe
 
 ## Compatibilidade
 
-- Sistema: `0.9.0-beta.1`
+- Sistema: `0.9.0-beta.2`
 - Foundry VTT mínimo: `14`
 - Verificado em: `14.359`

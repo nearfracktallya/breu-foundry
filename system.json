@@ -1,8 +1,8 @@
 {
   "id": "breu",
   "title": "BREU",
-  "description": "Implementação comunitária e não oficial de BREU para Foundry Virtual Tabletop. Beta pública: requer acesso ao livro BREU e não inclui o conteúdo completo das regras.",
-  "version": "0.9.0-beta.1",
+  "description": "Sistema comunitário não oficial de BREU para Foundry Virtual Tabletop. Beta pública: requer acesso ao livro BREU e não inclui o conteúdo completo das regras.",
+  "version": "0.9.0-beta.2",
   "compatibility": {
     "minimum": "14",
     "verified": "14.359"
@@ -38,5 +38,13 @@
   "socket": true,
   "url": "https://github.com/nearfracktallya/breu-foundry",
   "manifest": "https://raw.githubusercontent.com/nearfracktallya/breu-foundry/main/system.json",
-  "download": "https://github.com/nearfracktallya/breu-foundry/releases/download/v0.9.0-beta.1/breu-0.9.0-beta.1.zip"
+  "download": "https://github.com/nearfracktallya/breu-foundry/releases/download/v0.9.0-beta.2/breu-0.9.0-beta.2.zip",
+  "media": [
+    {
+      "type": "setup",
+      "url": "systems/breu/assets/breu-logo-colorido.jpg",
+      "thumbnail": "systems/breu/assets/breu-logo-colorido.jpg"
+    }
+  ],
+  "background": "systems/breu/assets/capa_arte_original.jpg"
 }

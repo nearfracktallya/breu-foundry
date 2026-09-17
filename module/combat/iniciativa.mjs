@@ -410,7 +410,7 @@ function adicionarPainelIniciativa(
     `;
 
 
-  // Insere abaixo da rodada e antes da lista de combatentes
+  // Insere no topo
 
   inserirPainel(
     element,
@@ -488,7 +488,7 @@ function adicionarPainelIniciativa(
 }
 
 
-// Posição do painel
+// Posição
 
 function inserirPainel(
   element,
@@ -496,8 +496,10 @@ function inserirPainel(
 ) {
 
   /*
-   * Primeiro tenta usar o cabeçalho nativo do Combat Tracker.
-   * É nele que o Foundry exibe a rodada atual.
+   * O Combat Tracker do Foundry V14 é dividido em
+   * cabeçalho, lista e rodapé. O painel do BREU deve
+   * entrar depois do cabeçalho nativo, que contém a
+   * rodada, e antes da lista de combatentes.
    */
   const header =
     element.querySelector(
@@ -520,8 +522,8 @@ function inserirPainel(
 
 
   /*
-   * Fallback:
-   * procura visualmente o texto "Round X" ou "Rodada X".
+   * Fallback: localiza o elemento que exibe Round/Rodada
+   * e sobe até o bloco de cabeçalho quando possível.
    */
   const round =
     Array
@@ -558,15 +560,11 @@ function inserirPainel(
       );
 
 
-    (
-      roundHeader
-      ?? round
-    )
+    (roundHeader ?? round)
       .insertAdjacentElement(
         "afterend",
         panel
       );
-
 
     return;
 
@@ -574,8 +572,8 @@ function inserirPainel(
 
 
   /*
-   * Se não encontrou o cabeçalho, coloca antes
-   * da lista de combatentes.
+   * Último fallback: coloca antes da lista de combatentes.
+   * Se nem ela existir, só então usa o início do tracker.
    */
   const tracker =
     element.querySelector(
@@ -597,9 +595,6 @@ function inserirPainel(
   }
 
 
-  /*
-   * Último fallback.
-   */
   element.prepend(
     panel
   );
@@ -716,7 +711,7 @@ async function iniciarRolagem(
   };
 
 
-  // GM
+  // Gm
 
   if (
     game.user.isGM
@@ -879,8 +874,7 @@ async function pedirModificador(
         icon:
           "fa-solid fa-xmark",
 
-        callback:
-          () => BREU_DIALOG_CANCEL
+        callback: () => BREU_DIALOG_CANCEL
 
       }
 
@@ -1483,7 +1477,7 @@ async function resetarEstado(
 }
 
 
-// GM principal
+// Gm principal
 
 function existeGMAtiva() {
 
@@ -1637,7 +1631,7 @@ function textoModificador(
 }
 
 
-// HTML
+// Html
 
 function escapeHTML(
   texto

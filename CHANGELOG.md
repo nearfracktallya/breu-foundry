@@ -2,6 +2,20 @@
 
 Todas as mudanças relevantes da implementação são registradas neste arquivo.
 
+## [0.9.0-beta.2] - 2026-09-17
+
+### Adicionado
+
+- Arte de apresentação do sistema na tela **Game Systems** do Foundry.
+- Arte de fundo padrão para novos mundos BREU.
+- Uso de `breu-logo-colorido.jpg` como mídia de Setup.
+- Uso de `capa_arte_original.jpg` como background padrão do sistema.
+
+### Corrigido
+
+- Painel da Iniciativa BREU reposicionado abaixo do cabeçalho de rodada do Combat Tracker.
+- Manifesto e link de download atualizados para a beta.2.
+
 ## [0.9.0-beta.1] - 2026-09-17
 
 Primeira beta pública.

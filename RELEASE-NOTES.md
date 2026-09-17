@@ -1,20 +1,21 @@
-# BREU para Foundry VTT — 0.9.0-beta.1
+# BREU Foundry — 0.9.0-beta.2
 
-Primeira beta pública da implementação comunitária de BREU para Foundry VTT v14.
+Segunda beta pública do sistema comunitário não oficial de BREU para Foundry VTT.
 
-Esta versão reúne a ficha completa de Personagem, Criaturas, Equipamentos, Magias, iniciativa por lados, automações seletivas, descansos, chat customizado e a identidade visual atual do projeto.
+## Destaques
 
-## Antes de instalar
+- O sistema agora possui arte própria na tela **Game Systems**.
+- Novos mundos BREU recebem `capa_arte_original.jpg` como fundo padrão de entrada.
+- `breu-logo-colorido.jpg` passa a representar o sistema na tela de Setup.
+- Corrigido o posicionamento do painel de Iniciativa BREU no Combat Tracker.
+- Mantidas as fichas, automações seletivas, chat customizado e identidade visual da beta anterior.
 
-- Esta é uma **beta**.
-- O projeto é **não oficial**, embora o uso do logotipo tenha sido autorizado por Diego Bassinello e o desenvolvimento comunitário tenha sido incentivado.
-- **O livro BREU é necessário.** O pacote não inclui conteúdo suficiente para substituir o livro.
-- Compatibilidade verificada com Foundry VTT `14.359`.
+## Importante
 
-Veja `CHANGELOG.md` para a lista detalhada de recursos e correções.
+Este sistema não inclui nem substitui o livro BREU.
 
+Para criação de personagens, consulta de regras, Benefícios, Magias, Criaturas e demais conteúdos do jogo, é necessário possuir acesso ao livro BREU.
 
-## Ajustes finais antes da publicação
+BREU é uma obra de Diego Bassinello e Rafão Araujo, publicada pela Luz Negra Editora. Esta implementação para Foundry VTT é comunitária e não oficial. O uso do logotipo BREU e o desenvolvimento desta implementação foram realizados com autorização e incentivo recebidos diretamente de Diego Bassinello.
 
-- O painel de Iniciativa BREU foi reposicionado para aparecer abaixo do cabeçalho de rodada do Combat Tracker.
-- O manifesto público e o download automático pelo GitHub foram configurados para esta release.
+Por ser uma versão beta, bugs e inconsistências ainda podem existir.
